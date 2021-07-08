@@ -14,6 +14,7 @@ namespace C969_Project
         [STAThread]
         static void Main()
         {
+            DataClass.DataCheck();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
