@@ -29,7 +29,7 @@ namespace C969_Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.AppointmentdataGridView1 = new System.Windows.Forms.DataGridView();
             this.ViewByWeekRadioBtn = new System.Windows.Forms.RadioButton();
             this.ViewByMonthRadioBtn = new System.Windows.Forms.RadioButton();
             this.AddApointmentBtn = new System.Windows.Forms.Button();
@@ -39,18 +39,18 @@ namespace C969_Project
             this.ConsultantReportBtn = new System.Windows.Forms.Button();
             this.CustomerReportBtn = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AppointmentdataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // AppointmentdataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 13);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(604, 834);
-            this.dataGridView1.TabIndex = 0;
+            this.AppointmentdataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AppointmentdataGridView1.Location = new System.Drawing.Point(13, 13);
+            this.AppointmentdataGridView1.Name = "AppointmentdataGridView1";
+            this.AppointmentdataGridView1.RowHeadersWidth = 62;
+            this.AppointmentdataGridView1.RowTemplate.Height = 28;
+            this.AppointmentdataGridView1.Size = new System.Drawing.Size(604, 834);
+            this.AppointmentdataGridView1.TabIndex = 0;
             // 
             // ViewByWeekRadioBtn
             // 
@@ -148,10 +148,10 @@ namespace C969_Project
             this.Controls.Add(this.AddApointmentBtn);
             this.Controls.Add(this.ViewByMonthRadioBtn);
             this.Controls.Add(this.ViewByWeekRadioBtn);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.AppointmentdataGridView1);
             this.Name = "AppointmentForm";
             this.Text = "AppointmentForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AppointmentdataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,7 +159,7 @@ namespace C969_Project
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView AppointmentdataGridView1;
         private System.Windows.Forms.RadioButton ViewByWeekRadioBtn;
         private System.Windows.Forms.RadioButton ViewByMonthRadioBtn;
         private System.Windows.Forms.Button AddApointmentBtn;

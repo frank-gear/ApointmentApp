@@ -24,14 +24,12 @@ namespace C969_Project
             sqlConnection.Close();
         }
         
-        public static object DataRead(string command)
+        public static MySqlDataReader DataRead(string command)
         {
             sqlConnection.Open();
             MySqlCommand build = new MySqlCommand(command, sqlConnection);
-            object complete = build.ExecuteReader();
-            //System.Diagnostics.Debug.WriteLine(complete);
-            sqlConnection.Close();
-            return complete;
+            return build.ExecuteReader();            
+            
         }
 
         public static void DataCheck()
@@ -48,7 +46,12 @@ namespace C969_Project
        
             
         }
-
+        /// <summary>
+        
+        
+        
+        /// build the data
+        /// </summary>
         public static void DataBuild()
         {
                         
@@ -102,8 +105,42 @@ namespace C969_Project
             DataWrite(appointment[0]);
             DataWrite(appointment[1]);
         }
+
+        public static bool UserLogin(string name, string pass)
+        {
+            string sqlcmd = $"SELECT userID FROM user WHERE userName = '{name}' AND password = '{pass}'";
+            MySqlDataReader complete = DataRead(sqlcmd);
+            bool status = complete.HasRows;
+            return status;
+            
+        }
+        //need to add apointment delete
+        public static void CustomerDelete(int custid, int addrid)
+        {
+            string sqlcmd1 = $"DELETE FROM customer WHERE customerid = '{custid}'";
+            string sqlcmd2 = $"DELETE FROM address WHERE addressid = '{addrid}'";
+            sqlConnection.Open();
+            DataWrite(sqlcmd1);
+            DataWrite(sqlcmd2);
+            sqlConnection.Close();
+        }
+        //get list of city names
+        public static Array GetCityList()
+        {
+            string sqlcmd = "SELECT city from city";
+            List<string> city = new List<string>();
+            MySqlDataReader reader = DataRead(sqlcmd);
+            while (reader.Read())
+            {
+                city.Add(Convert.ToString(reader["city"]));
+            }
+             string[] cityList = city.ToArray();
+            sqlConnection.Close();
+            return cityList;
+        }
     }
 }
+
 
 
 

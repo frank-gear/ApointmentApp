@@ -45,6 +45,7 @@ namespace C969_Project
             this.LoginBtn.TabIndex = 0;
             this.LoginBtn.Text = "Login";
             this.LoginBtn.UseVisualStyleBackColor = true;
+            this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
             // UserIdTextBox
             // 
@@ -86,6 +87,7 @@ namespace C969_Project
             this.ExitBtn.TabIndex = 5;
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // LoginForm
             // 

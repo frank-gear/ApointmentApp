@@ -12,9 +12,24 @@ namespace C969_Project
 {
     public partial class AddCustomerForm : Form
     {
+        private Array cityList;
         public AddCustomerForm()
         {
             InitializeComponent();
+            cityList = DataClass.GetCityList();
+            CitySelectBox.DataSource = cityList;
+        }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            RecordsForm.ActiveForm.Show();
         }
     }
 }

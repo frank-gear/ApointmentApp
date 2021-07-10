@@ -84,6 +84,12 @@
       <DependentUpon>CustomerReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataClass.cs" />
+    <Compile Include="DeleteCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteCustomerForm.Designer.cs">
+      <DependentUpon>DeleteCustomerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModifyAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
