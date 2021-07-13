@@ -14,6 +14,7 @@ namespace C969_Project
 {
     public partial class AppointmentForm : Form
     {
+        public static int setRow;
         public AppointmentForm()
         {
             InitializeComponent();
@@ -45,7 +46,41 @@ namespace C969_Project
 
         private void DeleteAppointmentBtn_Click(object sender, EventArgs e)
         {
+            DialogResult dialog = MessageBox.Show("Delete?", "Delete Part", MessageBoxButtons.YesNo);
+            setRow = Convert.ToInt32(AppointmentdataGridView1.Rows[AppointmentdataGridView1.CurrentCell.RowIndex].Cells[0].Value);
 
+            if (setRow != -1)
+            {
+                if (dialog == DialogResult.Yes)
+                {
+                    string sqlcmd = $" DELETE FROM appointment WHERE appointmentId = '{setRow}'";
+                    DataClass.DataWrite(sqlcmd);
+                    ConnectData();
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to delete", "Error");
+            }
+        }
+
+        private void ModifyAppointmentBtn_Click(object sender, EventArgs e)
+        {
+            setRow = Convert.ToInt32(AppointmentdataGridView1.Rows[AppointmentdataGridView1.CurrentCell.RowIndex].Cells[0].Value);
+            ModifyAppointmentForm.select = setRow;
+            this.Close();
+            ModifyAppointmentForm modifyAppointment = new ModifyAppointmentForm();
+            modifyAppointment.Show();
+            
+
+        }
+
+        private void AddApointmentBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AddAppointmentForm addAppointmentForm = new AddAppointmentForm();
+            addAppointmentForm.Show();
         }
     }
 }

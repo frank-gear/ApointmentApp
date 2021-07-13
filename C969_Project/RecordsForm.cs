@@ -21,6 +21,7 @@ namespace C969_Project
         }
         private void ConnectData()
         {
+            DataClass.sqlConnection.Close();
             DataClass.sqlConnection.Open();
             string sqlcon = "SELECT * FROM customer, address WHERE address.addressid = customer.addressid";
             MySqlCommand command = new MySqlCommand(sqlcon, DataClass.sqlConnection);

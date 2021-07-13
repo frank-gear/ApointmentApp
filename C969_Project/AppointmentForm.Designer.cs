@@ -47,19 +47,21 @@ namespace C969_Project
             // AppointmentdataGridView1
             // 
             this.AppointmentdataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AppointmentdataGridView1.Location = new System.Drawing.Point(13, 60);
+            this.AppointmentdataGridView1.Location = new System.Drawing.Point(9, 39);
+            this.AppointmentdataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.AppointmentdataGridView1.Name = "AppointmentdataGridView1";
             this.AppointmentdataGridView1.RowHeadersWidth = 62;
             this.AppointmentdataGridView1.RowTemplate.Height = 28;
-            this.AppointmentdataGridView1.Size = new System.Drawing.Size(1172, 253);
+            this.AppointmentdataGridView1.Size = new System.Drawing.Size(781, 164);
             this.AppointmentdataGridView1.TabIndex = 0;
             // 
             // ViewByWeekRadioBtn
             // 
             this.ViewByWeekRadioBtn.AutoSize = true;
-            this.ViewByWeekRadioBtn.Location = new System.Drawing.Point(15, 12);
+            this.ViewByWeekRadioBtn.Location = new System.Drawing.Point(10, 8);
+            this.ViewByWeekRadioBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ViewByWeekRadioBtn.Name = "ViewByWeekRadioBtn";
-            this.ViewByWeekRadioBtn.Size = new System.Drawing.Size(133, 24);
+            this.ViewByWeekRadioBtn.Size = new System.Drawing.Size(94, 17);
             this.ViewByWeekRadioBtn.TabIndex = 1;
             this.ViewByWeekRadioBtn.TabStop = true;
             this.ViewByWeekRadioBtn.Text = "View by Week";
@@ -68,9 +70,10 @@ namespace C969_Project
             // ViewByMonthRadioBtn
             // 
             this.ViewByMonthRadioBtn.AutoSize = true;
-            this.ViewByMonthRadioBtn.Location = new System.Drawing.Point(154, 12);
+            this.ViewByMonthRadioBtn.Location = new System.Drawing.Point(103, 8);
+            this.ViewByMonthRadioBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ViewByMonthRadioBtn.Name = "ViewByMonthRadioBtn";
-            this.ViewByMonthRadioBtn.Size = new System.Drawing.Size(137, 24);
+            this.ViewByMonthRadioBtn.Size = new System.Drawing.Size(95, 17);
             this.ViewByMonthRadioBtn.TabIndex = 2;
             this.ViewByMonthRadioBtn.TabStop = true;
             this.ViewByMonthRadioBtn.Text = "View by Month";
@@ -78,27 +81,32 @@ namespace C969_Project
             // 
             // AddApointmentBtn
             // 
-            this.AddApointmentBtn.Location = new System.Drawing.Point(311, 387);
+            this.AddApointmentBtn.Location = new System.Drawing.Point(207, 252);
+            this.AddApointmentBtn.Margin = new System.Windows.Forms.Padding(2);
             this.AddApointmentBtn.Name = "AddApointmentBtn";
-            this.AddApointmentBtn.Size = new System.Drawing.Size(276, 56);
+            this.AddApointmentBtn.Size = new System.Drawing.Size(184, 36);
             this.AddApointmentBtn.TabIndex = 3;
             this.AddApointmentBtn.Text = "Add Appointment";
             this.AddApointmentBtn.UseVisualStyleBackColor = true;
+            this.AddApointmentBtn.Click += new System.EventHandler(this.AddApointmentBtn_Click);
             // 
             // ModifyAppointmentBtn
             // 
-            this.ModifyAppointmentBtn.Location = new System.Drawing.Point(311, 325);
+            this.ModifyAppointmentBtn.Location = new System.Drawing.Point(207, 211);
+            this.ModifyAppointmentBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ModifyAppointmentBtn.Name = "ModifyAppointmentBtn";
-            this.ModifyAppointmentBtn.Size = new System.Drawing.Size(276, 56);
+            this.ModifyAppointmentBtn.Size = new System.Drawing.Size(184, 36);
             this.ModifyAppointmentBtn.TabIndex = 4;
             this.ModifyAppointmentBtn.Text = "Modify Appointment";
             this.ModifyAppointmentBtn.UseVisualStyleBackColor = true;
+            this.ModifyAppointmentBtn.Click += new System.EventHandler(this.ModifyAppointmentBtn_Click);
             // 
             // DeleteAppointmentBtn
             // 
-            this.DeleteAppointmentBtn.Location = new System.Drawing.Point(15, 325);
+            this.DeleteAppointmentBtn.Location = new System.Drawing.Point(10, 211);
+            this.DeleteAppointmentBtn.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteAppointmentBtn.Name = "DeleteAppointmentBtn";
-            this.DeleteAppointmentBtn.Size = new System.Drawing.Size(276, 56);
+            this.DeleteAppointmentBtn.Size = new System.Drawing.Size(184, 36);
             this.DeleteAppointmentBtn.TabIndex = 5;
             this.DeleteAppointmentBtn.Text = "Delete Appointment";
             this.DeleteAppointmentBtn.UseVisualStyleBackColor = true;
@@ -106,42 +114,47 @@ namespace C969_Project
             // 
             // AppointmentTypesByMonthReportFormBtn
             // 
-            this.AppointmentTypesByMonthReportFormBtn.Location = new System.Drawing.Point(593, 325);
+            this.AppointmentTypesByMonthReportFormBtn.Location = new System.Drawing.Point(395, 211);
+            this.AppointmentTypesByMonthReportFormBtn.Margin = new System.Windows.Forms.Padding(2);
             this.AppointmentTypesByMonthReportFormBtn.Name = "AppointmentTypesByMonthReportFormBtn";
-            this.AppointmentTypesByMonthReportFormBtn.Size = new System.Drawing.Size(276, 56);
+            this.AppointmentTypesByMonthReportFormBtn.Size = new System.Drawing.Size(184, 36);
             this.AppointmentTypesByMonthReportFormBtn.TabIndex = 6;
             this.AppointmentTypesByMonthReportFormBtn.Text = "Appointment Types By Month Report";
             this.AppointmentTypesByMonthReportFormBtn.UseVisualStyleBackColor = true;
             // 
             // ConsultantReportBtn
             // 
-            this.ConsultantReportBtn.Location = new System.Drawing.Point(593, 387);
+            this.ConsultantReportBtn.Location = new System.Drawing.Point(395, 252);
+            this.ConsultantReportBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ConsultantReportBtn.Name = "ConsultantReportBtn";
-            this.ConsultantReportBtn.Size = new System.Drawing.Size(276, 56);
+            this.ConsultantReportBtn.Size = new System.Drawing.Size(184, 36);
             this.ConsultantReportBtn.TabIndex = 7;
             this.ConsultantReportBtn.Text = "Consultant Schedule Report ";
             this.ConsultantReportBtn.UseVisualStyleBackColor = true;
             // 
             // CustomerReportBtn
             // 
-            this.CustomerReportBtn.Location = new System.Drawing.Point(593, 449);
+            this.CustomerReportBtn.Location = new System.Drawing.Point(395, 292);
+            this.CustomerReportBtn.Margin = new System.Windows.Forms.Padding(2);
             this.CustomerReportBtn.Name = "CustomerReportBtn";
-            this.CustomerReportBtn.Size = new System.Drawing.Size(276, 59);
+            this.CustomerReportBtn.Size = new System.Drawing.Size(184, 38);
             this.CustomerReportBtn.TabIndex = 8;
             this.CustomerReportBtn.Text = "Customer Report";
             this.CustomerReportBtn.UseVisualStyleBackColor = true;
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(873, 325);
+            this.monthCalendar1.Location = new System.Drawing.Point(582, 211);
+            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(6);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 9;
             // 
             // returntorecordsbtn
             // 
-            this.returntorecordsbtn.Location = new System.Drawing.Point(12, 468);
+            this.returntorecordsbtn.Location = new System.Drawing.Point(8, 304);
+            this.returntorecordsbtn.Margin = new System.Windows.Forms.Padding(2);
             this.returntorecordsbtn.Name = "returntorecordsbtn";
-            this.returntorecordsbtn.Size = new System.Drawing.Size(276, 50);
+            this.returntorecordsbtn.Size = new System.Drawing.Size(184, 32);
             this.returntorecordsbtn.TabIndex = 10;
             this.returntorecordsbtn.Text = "Return to Records";
             this.returntorecordsbtn.UseVisualStyleBackColor = true;
@@ -149,9 +162,10 @@ namespace C969_Project
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Location = new System.Drawing.Point(15, 528);
+            this.ExitBtn.Location = new System.Drawing.Point(10, 343);
+            this.ExitBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(276, 50);
+            this.ExitBtn.Size = new System.Drawing.Size(184, 32);
             this.ExitBtn.TabIndex = 11;
             this.ExitBtn.Text = "Exit Applicaiton";
             this.ExitBtn.UseVisualStyleBackColor = true;
@@ -159,9 +173,9 @@ namespace C969_Project
             // 
             // AppointmentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 585);
+            this.ClientSize = new System.Drawing.Size(798, 380);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.returntorecordsbtn);
             this.Controls.Add(this.monthCalendar1);
@@ -174,6 +188,7 @@ namespace C969_Project
             this.Controls.Add(this.ViewByMonthRadioBtn);
             this.Controls.Add(this.ViewByWeekRadioBtn);
             this.Controls.Add(this.AppointmentdataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AppointmentForm";
             this.Text = "AppointmentForm";
             ((System.ComponentModel.ISupportInitialize)(this.AppointmentdataGridView1)).EndInit();
