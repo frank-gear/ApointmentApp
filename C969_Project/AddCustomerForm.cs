@@ -22,14 +22,30 @@ namespace C969_Project
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
+            string name = CustomerNameTextBox.Text;
+            string address = StreetTextBox.Text;
+            string city = CitySelectBox.SelectedItem.ToString();
+            string sqlcmd = $"SELECT cityId FROM city WHERE city = '{city}'";
+            int cityid = DataClass.DataId(sqlcmd);
+            string zip = ZipCodeTextBox.Text;
+            string phone = PhoneNumberTextBox.Text;
+            int act = 0;
+            if (ActiveCheckBox1.Checked)
+            {
+                act = 1;
+            }
+            DataClass.newCustomer(name, address, cityid, zip, phone, act);
 
-
+            this.Close();
+            RecordsForm records = new RecordsForm();
+            records.Show();
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
-            RecordsForm.ActiveForm.Show();
+            RecordsForm records = new RecordsForm();
+            records.Show();
         }
     }
 }

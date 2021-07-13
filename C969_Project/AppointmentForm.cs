@@ -30,5 +30,22 @@ namespace C969_Project
             AppointmentdataGridView1.DataSource = table;
             DataClass.sqlConnection.Close();
         }
+
+        private void returntorecordsbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            RecordsForm recordsForm = new RecordsForm();
+            recordsForm.Show();
+        }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void DeleteAppointmentBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

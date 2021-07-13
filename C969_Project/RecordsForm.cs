@@ -22,7 +22,7 @@ namespace C969_Project
         private void ConnectData()
         {
             DataClass.sqlConnection.Open();
-            string sqlcon = "SELECT * FROM customer";
+            string sqlcon = "SELECT * FROM customer, address WHERE address.addressid = customer.addressid";
             MySqlCommand command = new MySqlCommand(sqlcon, DataClass.sqlConnection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             DataTable table = new DataTable();
@@ -33,14 +33,14 @@ namespace C969_Project
 
         private void AppointmentsBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             AppointmentForm appointmentForm = new AppointmentForm();
             appointmentForm.Show();
         }
 
         private void AddCustomerBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             AddCustomerForm addCustomerForm = new AddCustomerForm();
             addCustomerForm.Show();
 
@@ -48,7 +48,7 @@ namespace C969_Project
 
         private void ModifyCustomerBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             ModifyCustomerForm modifyCustomerForm = new ModifyCustomerForm();
             modifyCustomerForm.Show();
 
@@ -56,6 +56,9 @@ namespace C969_Project
 
         private void DeleteCustomerBtn_Click(object sender, EventArgs e)
         {
+            this.Close();
+            DeleteCustomerForm deleteCustomerForm = new DeleteCustomerForm();
+            deleteCustomerForm.Show();
            
         }
     }

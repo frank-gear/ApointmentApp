@@ -33,7 +33,6 @@ namespace C969_Project
             this.SaveBtn = new System.Windows.Forms.Button();
             this.PhoneNumberTextBox = new System.Windows.Forms.TextBox();
             this.ZipCodeTextBox = new System.Windows.Forms.TextBox();
-            this.CityTextBox = new System.Windows.Forms.TextBox();
             this.StreetTextBox = new System.Windows.Forms.TextBox();
             this.CustomerNameTextBox = new System.Windows.Forms.TextBox();
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
@@ -41,6 +40,11 @@ namespace C969_Project
             this.CityLabel = new System.Windows.Forms.Label();
             this.StreetLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
+            this.customerlistBox1 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.custselectbtn = new System.Windows.Forms.Button();
+            this.ActivecheckBox1 = new System.Windows.Forms.CheckBox();
+            this.citylistBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // CancelBtn
@@ -51,6 +55,7 @@ namespace C969_Project
             this.CancelBtn.TabIndex = 23;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // SaveBtn
             // 
@@ -60,6 +65,7 @@ namespace C969_Project
             this.SaveBtn.TabIndex = 22;
             this.SaveBtn.Text = "Save";
             this.SaveBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // PhoneNumberTextBox
             // 
@@ -74,13 +80,6 @@ namespace C969_Project
             this.ZipCodeTextBox.Name = "ZipCodeTextBox";
             this.ZipCodeTextBox.Size = new System.Drawing.Size(185, 26);
             this.ZipCodeTextBox.TabIndex = 20;
-            // 
-            // CityTextBox
-            // 
-            this.CityTextBox.Location = new System.Drawing.Point(150, 136);
-            this.CityTextBox.Name = "CityTextBox";
-            this.CityTextBox.Size = new System.Drawing.Size(185, 26);
-            this.CityTextBox.TabIndex = 19;
             // 
             // StreetTextBox
             // 
@@ -141,16 +140,68 @@ namespace C969_Project
             this.NameLabel.TabIndex = 12;
             this.NameLabel.Text = "Customer Name";
             // 
+            // customerlistBox1
+            // 
+            this.customerlistBox1.FormattingEnabled = true;
+            this.customerlistBox1.ItemHeight = 20;
+            this.customerlistBox1.Location = new System.Drawing.Point(395, 35);
+            this.customerlistBox1.Name = "customerlistBox1";
+            this.customerlistBox1.Size = new System.Drawing.Size(280, 84);
+            this.customerlistBox1.TabIndex = 24;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(395, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(195, 20);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Select Customer to Modify";
+            // 
+            // custselectbtn
+            // 
+            this.custselectbtn.Location = new System.Drawing.Point(530, 126);
+            this.custselectbtn.Name = "custselectbtn";
+            this.custselectbtn.Size = new System.Drawing.Size(144, 33);
+            this.custselectbtn.TabIndex = 26;
+            this.custselectbtn.Text = "select Customer";
+            this.custselectbtn.UseVisualStyleBackColor = true;
+            this.custselectbtn.Click += new System.EventHandler(this.custselectbtn_Click);
+            // 
+            // ActivecheckBox1
+            // 
+            this.ActivecheckBox1.AutoSize = true;
+            this.ActivecheckBox1.Location = new System.Drawing.Point(150, 305);
+            this.ActivecheckBox1.Name = "ActivecheckBox1";
+            this.ActivecheckBox1.Size = new System.Drawing.Size(150, 24);
+            this.ActivecheckBox1.TabIndex = 27;
+            this.ActivecheckBox1.Text = "Check for Active";
+            this.ActivecheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // citylistBox1
+            // 
+            this.citylistBox1.FormattingEnabled = true;
+            this.citylistBox1.ItemHeight = 20;
+            this.citylistBox1.Location = new System.Drawing.Point(150, 139);
+            this.citylistBox1.Name = "citylistBox1";
+            this.citylistBox1.ScrollAlwaysVisible = true;
+            this.citylistBox1.Size = new System.Drawing.Size(185, 44);
+            this.citylistBox1.TabIndex = 28;
+            // 
             // ModifyCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 450);
+            this.ClientSize = new System.Drawing.Size(780, 450);
+            this.Controls.Add(this.citylistBox1);
+            this.Controls.Add(this.ActivecheckBox1);
+            this.Controls.Add(this.custselectbtn);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.customerlistBox1);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.PhoneNumberTextBox);
             this.Controls.Add(this.ZipCodeTextBox);
-            this.Controls.Add(this.CityTextBox);
             this.Controls.Add(this.StreetTextBox);
             this.Controls.Add(this.CustomerNameTextBox);
             this.Controls.Add(this.PhoneNumberLabel);
@@ -171,7 +222,6 @@ namespace C969_Project
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.TextBox PhoneNumberTextBox;
         private System.Windows.Forms.TextBox ZipCodeTextBox;
-        private System.Windows.Forms.TextBox CityTextBox;
         private System.Windows.Forms.TextBox StreetTextBox;
         private System.Windows.Forms.TextBox CustomerNameTextBox;
         private System.Windows.Forms.Label PhoneNumberLabel;
@@ -179,5 +229,10 @@ namespace C969_Project
         private System.Windows.Forms.Label CityLabel;
         private System.Windows.Forms.Label StreetLabel;
         private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.ListBox customerlistBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button custselectbtn;
+        private System.Windows.Forms.CheckBox ActivecheckBox1;
+        private System.Windows.Forms.ListBox citylistBox1;
     }
 }

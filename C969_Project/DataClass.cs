@@ -12,9 +12,16 @@ namespace C969_Project
         public static string wguDatabase = "server=wgudb.ucertify.com;userid=U04iSl;password=53688253345;database=U04iSl";
 
         public static MySqlConnection sqlConnection = new MySqlConnection(wguDatabase);
-        
-        
-        
+
+        public static int DataId(string command)
+        {
+            sqlConnection.Open();
+            MySqlCommand build = new MySqlCommand(command, sqlConnection);
+            int complete = Convert.ToInt32(build.ExecuteScalar());           
+            sqlConnection.Close();
+            return complete;
+        }
+
         public static void DataWrite(string command)
         {
             sqlConnection.Open();
@@ -119,10 +126,10 @@ namespace C969_Project
         {
             string sqlcmd1 = $"DELETE FROM customer WHERE customerid = '{custid}'";
             string sqlcmd2 = $"DELETE FROM address WHERE addressid = '{addrid}'";
-            sqlConnection.Open();
+            string sqlcmd3 = $"DELETE FROM appointment WHERE customerid = '{custid}'";
             DataWrite(sqlcmd1);
             DataWrite(sqlcmd2);
-            sqlConnection.Close();
+            DataWrite(sqlcmd3);
         }
         //get list of city names
         public static Array GetCityList()
@@ -137,6 +144,40 @@ namespace C969_Project
              string[] cityList = city.ToArray();
             sqlConnection.Close();
             return cityList;
+        }
+        public static Array GetCustomerList()
+        {
+            string sqlcmd = "SELECT customerName from customer";
+            List<string> customerNameList = new List<string>();
+            MySqlDataReader reader = DataRead(sqlcmd);
+            while (reader.Read())
+            {
+                customerNameList.Add(Convert.ToString(reader["customerName"]));
+            }
+            string[] nameList = customerNameList.ToArray();
+            sqlConnection.Close();
+            return nameList;
+        }
+        public static void modifyCustomer(int custid, int addid, string custname, string address, int citid, string postal, string phone, int activ)
+        {
+            string custupdate = $"UPDATE customer set customerName = '{custname}', active = '{activ}' WHERE customerId ='{custid}'";
+            string addupdate = $"update address set address = '{address}', cityId = '{citid}', postalCode ='{postal}', phone = '{phone}' WHERE addressId = '{addid}'";
+            DataWrite(custupdate);
+            DataWrite(addupdate);
+
+        }
+        public static void newCustomer(string custname, string address, int citid, string postal, string phone, int activ)
+        {
+            //get the count for address
+            string addcount = "SELECT COUNT(*) FROM address";
+            int addid = DataId(addcount) + 1;
+            string addsql = $"INSERT INTO `address` VALUES('{addid}','{address}', '', '{citid}', '{postal}', '{phone}', '{DateTime.UtcNow}', 'test', '{DateTime.UtcNow}', 'test')";
+            DataWrite(addsql);
+            string custcount = "SELECT COUNT(*) FROM customer";          
+            int custid = DataId(custcount) + 1;
+            string addcust = $"INSERT INTO `customer` VALUES ('{custid}','{custname}','{addid}','{activ}'{DateTime.Now}','test','{DateTime.Now}','test')";
+            DataWrite(addcust);
+
         }
     }
 }

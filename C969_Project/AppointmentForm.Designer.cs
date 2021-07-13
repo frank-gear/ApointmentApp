@@ -39,23 +39,25 @@ namespace C969_Project
             this.ConsultantReportBtn = new System.Windows.Forms.Button();
             this.CustomerReportBtn = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.returntorecordsbtn = new System.Windows.Forms.Button();
+            this.ExitBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AppointmentdataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // AppointmentdataGridView1
             // 
             this.AppointmentdataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AppointmentdataGridView1.Location = new System.Drawing.Point(13, 13);
+            this.AppointmentdataGridView1.Location = new System.Drawing.Point(13, 60);
             this.AppointmentdataGridView1.Name = "AppointmentdataGridView1";
             this.AppointmentdataGridView1.RowHeadersWidth = 62;
             this.AppointmentdataGridView1.RowTemplate.Height = 28;
-            this.AppointmentdataGridView1.Size = new System.Drawing.Size(604, 834);
+            this.AppointmentdataGridView1.Size = new System.Drawing.Size(1172, 253);
             this.AppointmentdataGridView1.TabIndex = 0;
             // 
             // ViewByWeekRadioBtn
             // 
             this.ViewByWeekRadioBtn.AutoSize = true;
-            this.ViewByWeekRadioBtn.Location = new System.Drawing.Point(624, 13);
+            this.ViewByWeekRadioBtn.Location = new System.Drawing.Point(15, 12);
             this.ViewByWeekRadioBtn.Name = "ViewByWeekRadioBtn";
             this.ViewByWeekRadioBtn.Size = new System.Drawing.Size(133, 24);
             this.ViewByWeekRadioBtn.TabIndex = 1;
@@ -66,7 +68,7 @@ namespace C969_Project
             // ViewByMonthRadioBtn
             // 
             this.ViewByMonthRadioBtn.AutoSize = true;
-            this.ViewByMonthRadioBtn.Location = new System.Drawing.Point(763, 13);
+            this.ViewByMonthRadioBtn.Location = new System.Drawing.Point(154, 12);
             this.ViewByMonthRadioBtn.Name = "ViewByMonthRadioBtn";
             this.ViewByMonthRadioBtn.Size = new System.Drawing.Size(137, 24);
             this.ViewByMonthRadioBtn.TabIndex = 2;
@@ -76,7 +78,7 @@ namespace C969_Project
             // 
             // AddApointmentBtn
             // 
-            this.AddApointmentBtn.Location = new System.Drawing.Point(624, 362);
+            this.AddApointmentBtn.Location = new System.Drawing.Point(311, 387);
             this.AddApointmentBtn.Name = "AddApointmentBtn";
             this.AddApointmentBtn.Size = new System.Drawing.Size(276, 56);
             this.AddApointmentBtn.TabIndex = 3;
@@ -85,7 +87,7 @@ namespace C969_Project
             // 
             // ModifyAppointmentBtn
             // 
-            this.ModifyAppointmentBtn.Location = new System.Drawing.Point(624, 448);
+            this.ModifyAppointmentBtn.Location = new System.Drawing.Point(311, 325);
             this.ModifyAppointmentBtn.Name = "ModifyAppointmentBtn";
             this.ModifyAppointmentBtn.Size = new System.Drawing.Size(276, 56);
             this.ModifyAppointmentBtn.TabIndex = 4;
@@ -94,16 +96,17 @@ namespace C969_Project
             // 
             // DeleteAppointmentBtn
             // 
-            this.DeleteAppointmentBtn.Location = new System.Drawing.Point(624, 537);
+            this.DeleteAppointmentBtn.Location = new System.Drawing.Point(15, 325);
             this.DeleteAppointmentBtn.Name = "DeleteAppointmentBtn";
             this.DeleteAppointmentBtn.Size = new System.Drawing.Size(276, 56);
             this.DeleteAppointmentBtn.TabIndex = 5;
             this.DeleteAppointmentBtn.Text = "Delete Appointment";
             this.DeleteAppointmentBtn.UseVisualStyleBackColor = true;
+            this.DeleteAppointmentBtn.Click += new System.EventHandler(this.DeleteAppointmentBtn_Click);
             // 
             // AppointmentTypesByMonthReportFormBtn
             // 
-            this.AppointmentTypesByMonthReportFormBtn.Location = new System.Drawing.Point(624, 621);
+            this.AppointmentTypesByMonthReportFormBtn.Location = new System.Drawing.Point(593, 325);
             this.AppointmentTypesByMonthReportFormBtn.Name = "AppointmentTypesByMonthReportFormBtn";
             this.AppointmentTypesByMonthReportFormBtn.Size = new System.Drawing.Size(276, 56);
             this.AppointmentTypesByMonthReportFormBtn.TabIndex = 6;
@@ -112,7 +115,7 @@ namespace C969_Project
             // 
             // ConsultantReportBtn
             // 
-            this.ConsultantReportBtn.Location = new System.Drawing.Point(624, 708);
+            this.ConsultantReportBtn.Location = new System.Drawing.Point(593, 387);
             this.ConsultantReportBtn.Name = "ConsultantReportBtn";
             this.ConsultantReportBtn.Size = new System.Drawing.Size(276, 56);
             this.ConsultantReportBtn.TabIndex = 7;
@@ -121,7 +124,7 @@ namespace C969_Project
             // 
             // CustomerReportBtn
             // 
-            this.CustomerReportBtn.Location = new System.Drawing.Point(624, 788);
+            this.CustomerReportBtn.Location = new System.Drawing.Point(593, 449);
             this.CustomerReportBtn.Name = "CustomerReportBtn";
             this.CustomerReportBtn.Size = new System.Drawing.Size(276, 59);
             this.CustomerReportBtn.TabIndex = 8;
@@ -130,15 +133,37 @@ namespace C969_Project
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(624, 76);
+            this.monthCalendar1.Location = new System.Drawing.Point(873, 325);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 9;
+            // 
+            // returntorecordsbtn
+            // 
+            this.returntorecordsbtn.Location = new System.Drawing.Point(12, 468);
+            this.returntorecordsbtn.Name = "returntorecordsbtn";
+            this.returntorecordsbtn.Size = new System.Drawing.Size(276, 50);
+            this.returntorecordsbtn.TabIndex = 10;
+            this.returntorecordsbtn.Text = "Return to Records";
+            this.returntorecordsbtn.UseVisualStyleBackColor = true;
+            this.returntorecordsbtn.Click += new System.EventHandler(this.returntorecordsbtn_Click);
+            // 
+            // ExitBtn
+            // 
+            this.ExitBtn.Location = new System.Drawing.Point(15, 528);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(276, 50);
+            this.ExitBtn.TabIndex = 11;
+            this.ExitBtn.Text = "Exit Applicaiton";
+            this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // AppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 866);
+            this.ClientSize = new System.Drawing.Size(1197, 585);
+            this.Controls.Add(this.ExitBtn);
+            this.Controls.Add(this.returntorecordsbtn);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.CustomerReportBtn);
             this.Controls.Add(this.ConsultantReportBtn);
@@ -169,5 +194,7 @@ namespace C969_Project
         private System.Windows.Forms.Button ConsultantReportBtn;
         private System.Windows.Forms.Button CustomerReportBtn;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Button returntorecordsbtn;
+        private System.Windows.Forms.Button ExitBtn;
     }
 }

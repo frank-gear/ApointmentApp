@@ -134,6 +134,9 @@
     <EmbeddedResource Include="CustomerReportForm.resx">
       <DependentUpon>CustomerReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DeleteCustomerForm.resx">
+      <DependentUpon>DeleteCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
