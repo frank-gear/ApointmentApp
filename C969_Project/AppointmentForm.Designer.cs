@@ -38,7 +38,7 @@ namespace C969_Project
             this.AppointmentTypesByMonthReportFormBtn = new System.Windows.Forms.Button();
             this.ConsultantReportBtn = new System.Windows.Forms.Button();
             this.CustomerReportBtn = new System.Windows.Forms.Button();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.AppointmentMonthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.returntorecordsbtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AppointmentdataGridView1)).BeginInit();
@@ -142,12 +142,13 @@ namespace C969_Project
             this.CustomerReportBtn.Text = "Customer Report";
             this.CustomerReportBtn.UseVisualStyleBackColor = true;
             // 
-            // monthCalendar1
+            // AppointmentMonthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(582, 211);
-            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(6);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 9;
+            this.AppointmentMonthCalendar1.Location = new System.Drawing.Point(582, 211);
+            this.AppointmentMonthCalendar1.Margin = new System.Windows.Forms.Padding(6);
+            this.AppointmentMonthCalendar1.Name = "AppointmentMonthCalendar1";
+            this.AppointmentMonthCalendar1.TabIndex = 9;
+            this.AppointmentMonthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.AppointmentMonthCalendar1_DateChanged);
             // 
             // returntorecordsbtn
             // 
@@ -175,10 +176,10 @@ namespace C969_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 380);
+            this.ClientSize = new System.Drawing.Size(876, 380);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.returntorecordsbtn);
-            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.AppointmentMonthCalendar1);
             this.Controls.Add(this.CustomerReportBtn);
             this.Controls.Add(this.ConsultantReportBtn);
             this.Controls.Add(this.AppointmentTypesByMonthReportFormBtn);
@@ -208,7 +209,7 @@ namespace C969_Project
         private System.Windows.Forms.Button AppointmentTypesByMonthReportFormBtn;
         private System.Windows.Forms.Button ConsultantReportBtn;
         private System.Windows.Forms.Button CustomerReportBtn;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar AppointmentMonthCalendar1;
         private System.Windows.Forms.Button returntorecordsbtn;
         private System.Windows.Forms.Button ExitBtn;
     }

@@ -15,18 +15,57 @@ namespace C969_Project
     public partial class AppointmentForm : Form
     {
         public static int setRow;
+        DataTable table = new DataTable();
+        DateTime currdt;
         public AppointmentForm()
         {
             InitializeComponent();
-            ConnectData();
+            currdt = DateTime.Now;
+            AppointmentMonthCalendar1.AddBoldedDate(currdt);
+            Day();
+            
+        }
+        private void week()
+        {
+            AppointmentMonthCalendar1.RemoveAllBoldedDates();
+            table.Clear();
+            int dw = (int)currdt.DayOfWeek;
+            string start = currdt.AddDays(-dw).ToString();
+            DateTime temp = Convert.ToDateTime(start);
+            for (int i =0; i<7; i++)
+            {
+                AppointmentMonthCalendar1.AddBoldedDate(temp.AddDays(i));
+            }
+            AppointmentMonthCalendar1.UpdateBoldedDates();
+            string end = currdt.AddDays(7 - dw).ToString();
+            string sqlcmd = $"SELECT * FROM appointment WHERE start BETWEEN = DATE('{start}') AND DATE('{end}')";
+            DataClass.sqlConnection.Open();
+            MySqlCommand command = new MySqlCommand(sqlcmd, DataClass.sqlConnection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(table);
+            AppointmentdataGridView1.DataSource = table;
+            DataClass.sqlConnection.Close();
+
+        }
+        private void Day()
+        {
+            AppointmentMonthCalendar1.RemoveAllBoldedDates();
+            AppointmentMonthCalendar1.AddBoldedDate(currdt);
+            table.Clear();
+            string sqlcmd = $"SELECT * FROM appointment WHERE start = DATE('{currdt}')";
+            DataClass.sqlConnection.Open();           
+            MySqlCommand command = new MySqlCommand(sqlcmd, DataClass.sqlConnection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(table);
+            AppointmentdataGridView1.DataSource = table;
+            DataClass.sqlConnection.Close();
         }
         private void ConnectData()
         {
             DataClass.sqlConnection.Open();
             string sqlcon = "SELECT * FROM appointment";
             MySqlCommand command = new MySqlCommand(sqlcon, DataClass.sqlConnection);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);            
             adapter.Fill(table);
             AppointmentdataGridView1.DataSource = table;
             DataClass.sqlConnection.Close();
@@ -81,6 +120,12 @@ namespace C969_Project
             this.Close();
             AddAppointmentForm addAppointmentForm = new AddAppointmentForm();
             addAppointmentForm.Show();
+        }
+
+        private void AppointmentMonthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            currdt = AppointmentMonthCalendar1.SelectionStart;
+            Day();
         }
     }
 }
