@@ -7,21 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace C969_Project
 {
     public partial class AddCustomerForm : Form
     {
+       
         private Array cityList;
+        private List<string> customerNameList = new List<string>();
         public AddCustomerForm()
         {
             InitializeComponent();
             cityList = DataClass.GetCityList();
             CitySelectBox.DataSource = cityList;
+            string sqlcmd = "SELECT customerName from customer";
+            
+            MySqlDataReader reader = DataClass.DataRead(sqlcmd);
+            while (reader.Read())
+            {
+                customerNameList.Add(Convert.ToString(reader["customerName"]));
+            }
+            DataClass.sqlConnection.Close();
+
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
+
+
+
             string name = CustomerNameTextBox.Text;
             string address = StreetTextBox.Text;
             string city = CitySelectBox.SelectedItem.ToString();
@@ -30,15 +45,28 @@ namespace C969_Project
             string zip = ZipCodeTextBox.Text;
             string phone = PhoneNumberTextBox.Text;
             int act = 0;
-            if (ActiveCheckBox1.Checked)
+            
+                //created this lambda to check for invalid customer names
+                //invalid customer info check
+            if (customerNameList.All(x => (x == CustomerNameTextBox.Text)))
             {
-                act = 1;
+                string err = "Invalid entry. This Customer already exist. ";
+                MessageBox.Show(err);
+                CustomerNameTextBox.Text = "";
             }
-            DataClass.newCustomer(name, address, cityid, zip, phone, act);
 
-            this.Close();
-            RecordsForm records = new RecordsForm();
-            records.Show();
+            else
+            {
+                if (ActiveCheckBox1.Checked)
+                {
+                    act = 1;
+                }
+                DataClass.newCustomer(name, address, cityid, zip, phone, act);
+
+                this.Close();
+                RecordsForm records = new RecordsForm();
+                records.Show();
+            }
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)

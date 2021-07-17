@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
+
 namespace C969_Project
 {
     public static class DataClass
@@ -17,7 +20,7 @@ namespace C969_Project
         {
             sqlConnection.Open();
             MySqlCommand build = new MySqlCommand(command, sqlConnection);
-            int complete = Convert.ToInt32(build.ExecuteScalar());           
+            int complete = Convert.ToInt32(build.ExecuteScalar());
             sqlConnection.Close();
             return complete;
         }
@@ -30,13 +33,13 @@ namespace C969_Project
             System.Diagnostics.Debug.WriteLine(complete);
             sqlConnection.Close();
         }
-        
+
         public static MySqlDataReader DataRead(string command)
         {
             sqlConnection.Open();
             MySqlCommand build = new MySqlCommand(command, sqlConnection);
-            return build.ExecuteReader();            
-            
+            return build.ExecuteReader();
+
         }
 
         public static void DataCheck()
@@ -50,18 +53,18 @@ namespace C969_Project
             {
                 DataClass.DataBuild();
             }
-       
-            
+
+
         }
         /// <summary>
-        
-        
-        
+
+
+
         /// build the data
         /// </summary>
         public static void DataBuild()
         {
-                        
+
             string[] country =
                 {
                 "INSERT INTO `country` VALUES (1, 'US', '2019-01-01 00:00:00', 'test', '2019-01-01 00:00:00', 'test')",
@@ -71,6 +74,7 @@ namespace C969_Project
             DataWrite(country[0]);
             DataWrite(country[1]);
             DataWrite(country[2]);
+           
             string[] city =
             {
                 "INSERT INTO `city` VALUES  (1,'New York',1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
@@ -104,13 +108,20 @@ namespace C969_Project
             DataWrite(customer[2]);
             string user = "INSERT INTO `user` VALUES (1,'test','test',1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')";
             DataWrite(user);
+            DateTime time1 = Convert.ToDateTime(DateTime.UtcNow).AddMinutes(14);
+            DateTime time = Convert.ToDateTime(DateTime.UtcNow).AddMinutes(30);
+            string time2 = time1.ToString("yyyy-MM-dd HH:mm:ss");
+            string timeEnd = time.ToString("yyyy-MM-dd HH:mm:ss");
             string[] appointment =
             {
               "INSERT INTO `appointment` VALUES (1,1,1,'not needed','not needed','not needed','not needed','Presentation','not needed','2021-07-01 00:00:00','2021-07-01 00:00:00','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
-              "INSERT INTO `appointment` VALUES (2,2,1,'not needed','not needed','not needed','not needed','Scrum','not needed','2021-07-01 00:00:00','2021-07-01 00:00:00','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')"
+              "INSERT INTO `appointment` VALUES (2,2,1,'not needed','not needed','not needed','not needed','Scrum','not needed','2021-07-01 00:00:00','2021-07-01 00:00:00','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
+              $"INSERT INTO `appointment` VALUES (3,3,1,'not needed','not needed','not needed','not needed','Scrum','not needed','{time2}','{timeEnd}','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')"
+
             };
             DataWrite(appointment[0]);
             DataWrite(appointment[1]);
+            DataWrite(appointment[2]);
         }
 
         public static bool UserLogin(string name, string pass)
@@ -119,7 +130,7 @@ namespace C969_Project
             MySqlDataReader complete = DataRead(sqlcmd);
             bool status = complete.HasRows;
             return status;
-            
+
         }
         //need to add apointment delete
         public static void CustomerDelete(int custid, int addrid)
@@ -141,7 +152,7 @@ namespace C969_Project
             {
                 city.Add(Convert.ToString(reader["city"]));
             }
-             string[] cityList = city.ToArray();
+            string[] cityList = city.ToArray();
             sqlConnection.Close();
             return cityList;
         }
@@ -173,7 +184,7 @@ namespace C969_Project
             int addid = DataId(addcount) + 1;
             string addsql = $"INSERT INTO `address` VALUES('{addid}','{address}', '', '{citid}', '{postal}', '{phone}', '{DateTime.UtcNow}', 'test', '{DateTime.UtcNow}', 'test')";
             DataWrite(addsql);
-            string custcount = "SELECT COUNT(*) FROM customer";          
+            string custcount = "SELECT COUNT(*) FROM customer";
             int custid = DataId(custcount) + 1;
             string addcust = $"INSERT INTO `customer` VALUES ('{custid}','{custname}','{addid}','{activ}'{DateTime.Now}','test','{DateTime.Now}','test')";
             DataWrite(addcust);
@@ -191,6 +202,30 @@ namespace C969_Project
             int appid = DataId(addcount) + 1;
             string sqlcmd = $"INSERT INTO `appointment` VALUES ('{appid}','{custid}',1,'{title}','not needed','not needed','not needed','{type}','not needed','{start}','{end}','{DateTime.UtcNow}','test','{DateTime.UtcNow}','test')";
             DataWrite(sqlcmd);
+        }
+        public static void AppointmentAlert()
+        {
+            DateTime time = Convert.ToDateTime(DateTime.UtcNow);
+            DateTime time2 = Convert.ToDateTime(DateTime.UtcNow).AddMinutes(15);
+
+            string sqlcmd = "SELECT customer.customerId, customer.customerName, appointment.appointmentId, appointment.start, appointment.end from appointment INNER JOIN customer on appointment.customerId = customer.customerId where start BETWEEN '" +
+                time.ToString("yyyy-MM-dd HH:mm:ss") + "' AND '" +
+                time2.ToString("yyyy-MM-dd HH:mm:ss") + "';";
+            DataClass.sqlConnection.Open();
+            MySqlCommand command = new MySqlCommand(sqlcmd, DataClass.sqlConnection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            sqlConnection.Close();
+
+
+            if (table.Rows.Count > 0)
+            {
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    MessageBox.Show("In 15 minutes Please attend your appoint with " + table.Rows[i]["customerName"], "Appointment");
+                }
+            }
         }
     }
 }

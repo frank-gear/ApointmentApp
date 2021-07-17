@@ -43,6 +43,7 @@ namespace C969_Project
                 fileWriter.WriteLine(write);
                 
                 this.Hide();
+                DataClass.AppointmentAlert();
                 RecordsForm recordsForm = new RecordsForm();
                 recordsForm.Show();
             }
