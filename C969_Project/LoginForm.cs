@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +16,7 @@ namespace C969_Project
 {
     public partial class LoginForm : Form
     {
+       private string err;
                
         private static string fileName = "UserLog.txt";
         private static FileStream file = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write);
@@ -22,8 +26,20 @@ namespace C969_Project
             InitializeComponent();
             
         }
-       
- 
+      
+
+        private void lang()
+        {
+            
+            if (RegionInfo.CurrentRegion.DisplayName == "France")
+            {
+                UserIdLabel.Text = "utilisatrice";
+                PasswordLabel.Text = "le mot de passe";
+                LoginBtn.Text = "connexion";
+                ExitBtn.Text = "sortir";
+                err = "mauvaise connexion";
+            }
+        }
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
@@ -49,7 +65,7 @@ namespace C969_Project
             }
             else
             {
-                string err = "bad login";
+                 err = "bad login";
                 MessageBox.Show(err);
                 UserIdTextBox.Text = "";
                 UserPasswordTextBox.Text = "";
