@@ -34,17 +34,14 @@ namespace C969_Project
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
+            if (CustomerNameTextBox.Text == null || StreetTextBox.Text == null || ZipCodeTextBox.Text == null || PhoneNumberTextBox.Text == null)
+            {
+                string err = "Invalid entry. Customer data is missing. ";
+                MessageBox.Show(err);
+            }
 
 
-
-            string name = CustomerNameTextBox.Text;
-            string address = StreetTextBox.Text;
-            string city = CitySelectBox.SelectedItem.ToString();
-            string sqlcmd = $"SELECT cityId FROM city WHERE city = '{city}'";
-            int cityid = DataClass.DataId(sqlcmd);
-            string zip = ZipCodeTextBox.Text;
-            string phone = PhoneNumberTextBox.Text;
-            int act = 0;
+            
             
                 //created this lambda to check for invalid customer names
                 //invalid customer info check
@@ -54,9 +51,17 @@ namespace C969_Project
                 MessageBox.Show(err);
                 CustomerNameTextBox.Text = "";
             }
-
+           
             else
             {
+                string name = CustomerNameTextBox.Text;
+                string address = StreetTextBox.Text;
+                string city = CitySelectBox.SelectedItem.ToString();
+                string sqlcmd = $"SELECT cityId FROM city WHERE city = '{city}'";
+                int cityid = DataClass.DataId(sqlcmd);
+                string zip = ZipCodeTextBox.Text;
+                string phone = PhoneNumberTextBox.Text;
+                int act = 0;
                 if (ActiveCheckBox1.Checked)
                 {
                     act = 1;

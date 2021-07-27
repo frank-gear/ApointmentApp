@@ -177,16 +177,24 @@ namespace C969_Project
             DataWrite(addupdate);
 
         }
+        public static string CurDate()
+        {
+            DateTime time1 = Convert.ToDateTime(DateTime.UtcNow);
+            string time2 = time1.ToString("yyyy-MM-dd HH:mm:ss");
+            return time2;
+        }
         public static void newCustomer(string custname, string address, int citid, string postal, string phone, int activ)
         {
             //get the count for address
             string addcount = "SELECT COUNT(*) FROM address";
             int addid = DataId(addcount) + 1;
-            string addsql = $"INSERT INTO `address` VALUES('{addid}','{address}', '', '{citid}', '{postal}', '{phone}', '{DateTime.UtcNow}', 'test', '{DateTime.UtcNow}', 'test')";
+           
+            string
+            string addsql = $"INSERT INTO `address` VALUES('{addid}','{address}', '', '{citid}', '{postal}', '{phone}', '{CurDate()}', 'test', '{CurDate()}', 'test')";
             DataWrite(addsql);
             string custcount = "SELECT COUNT(*) FROM customer";
             int custid = DataId(custcount) + 1;
-            string addcust = $"INSERT INTO `customer` VALUES ('{custid}','{custname}','{addid}','{activ}'{DateTime.Now}','test','{DateTime.Now}','test')";
+            string addcust = $"INSERT INTO `customer` VALUES ('{custid}','{custname}','{addid}','{activ}'{CurDate()}','test','{CurDate()}','test')";
             DataWrite(addcust);
 
         }
