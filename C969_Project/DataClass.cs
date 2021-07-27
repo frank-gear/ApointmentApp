@@ -188,13 +188,11 @@ namespace C969_Project
             //get the count for address
             string addcount = "SELECT COUNT(*) FROM address";
             int addid = DataId(addcount) + 1;
-           
-            string
-            string addsql = $"INSERT INTO `address` VALUES('{addid}','{address}', '', '{citid}', '{postal}', '{phone}', '{CurDate()}', 'test', '{CurDate()}', 'test')";
+            string addsql = $"INSERT INTO address VALUES({addid},'{address}', ' ', {citid}, '{postal}', '{phone}', '{CurDate()}', 'test', '{CurDate()}', 'test')";
             DataWrite(addsql);
             string custcount = "SELECT COUNT(*) FROM customer";
             int custid = DataId(custcount) + 1;
-            string addcust = $"INSERT INTO `customer` VALUES ('{custid}','{custname}','{addid}','{activ}'{CurDate()}','test','{CurDate()}','test')";
+            string addcust = $"INSERT INTO customer VALUES ({custid},'{custname}',{addid},{activ},'{CurDate()}','test','{CurDate()}','test')";
             DataWrite(addcust);
 
         }

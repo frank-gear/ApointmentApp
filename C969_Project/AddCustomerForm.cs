@@ -34,7 +34,7 @@ namespace C969_Project
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            if (CustomerNameTextBox.Text == null || StreetTextBox.Text == null || ZipCodeTextBox.Text == null || PhoneNumberTextBox.Text == null)
+            if (CustomerNameTextBox.Text == "" || StreetTextBox.Text == "" || ZipCodeTextBox.Text == "" || PhoneNumberTextBox.Text == "")
             {
                 string err = "Invalid entry. Customer data is missing. ";
                 MessageBox.Show(err);
@@ -45,7 +45,7 @@ namespace C969_Project
             
                 //created this lambda to check for invalid customer names
                 //invalid customer info check
-            if (customerNameList.All(x => (x == CustomerNameTextBox.Text)))
+            else if (customerNameList.All(x => (x == CustomerNameTextBox.Text)))
             {
                 string err = "Invalid entry. This Customer already exist. ";
                 MessageBox.Show(err);

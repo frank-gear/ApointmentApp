@@ -37,6 +37,10 @@ namespace C969_Project
             int custid = DataClass.DataId(sqlcmd1);
             int addid = DataClass.DataId(sqlcmd2);
             DataClass.CustomerDelete(custid, addid);
+            this.Close(); 
+            RecordsForm records = new RecordsForm();
+            records.Show();
+
         }
     }
 }
