@@ -48,24 +48,34 @@ namespace C969_Project
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            DataClass.sqlConnection.Close();
-           string name = CustomerNameTextBox.Text;
-            string address = StreetTextBox.Text;
-            string city = citylistBox1.SelectedItem.ToString();
-            string sqlcmd = $"SELECT cityId FROM city WHERE city = '{city}'";
-            int cityid = DataClass.DataId(sqlcmd);
-            string zip = ZipCodeTextBox.Text;
-            string phone  = PhoneNumberTextBox.Text;
-            int act = 0;
-            if (ActivecheckBox1.Checked)
+            if (CustomerNameTextBox.Text == "" || StreetTextBox.Text == "" || ZipCodeTextBox.Text == "" || PhoneNumberTextBox.Text == "")
             {
-                act = 1;
+                string err = "Invalid entry. Customer data is missing. ";
+                MessageBox.Show(err);
             }
+            else
+            {
+                DataClass.sqlConnection.Close();
+                string name = CustomerNameTextBox.Text;
+                string address = StreetTextBox.Text;
+                string city = citylistBox1.SelectedItem.ToString();
+                string sqlcmd = $"SELECT cityId FROM city WHERE city = '{city}'";
+                int cityid = DataClass.DataId(sqlcmd);
+                string zip = ZipCodeTextBox.Text;
+                string phone = PhoneNumberTextBox.Text;
+                int act = 0;
+                if (ActivecheckBox1.Checked)
+                {
+                    act = 1;
+                }
 
-            DataClass.modifyCustomer(custId, addId, name, address, cityid, zip, phone, act);
-            this.Close();
-            RecordsForm recordsForm = new RecordsForm();
-            recordsForm.Show();
+                DataClass.modifyCustomer(custId, addId, name, address, cityid, zip, phone, act);
+                this.Close();
+                RecordsForm recordsForm = new RecordsForm();
+                recordsForm.Show();
+
+            }
+           
         }
     }
 }
