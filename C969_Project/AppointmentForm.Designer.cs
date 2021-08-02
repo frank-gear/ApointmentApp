@@ -41,50 +41,47 @@ namespace C969_Project
             this.AppointmentMonthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.returntorecordsbtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
+            this.dayradioButton1 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.AppointmentdataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // AppointmentdataGridView1
             // 
             this.AppointmentdataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AppointmentdataGridView1.Location = new System.Drawing.Point(9, 39);
-            this.AppointmentdataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.AppointmentdataGridView1.Location = new System.Drawing.Point(14, 60);
             this.AppointmentdataGridView1.Name = "AppointmentdataGridView1";
             this.AppointmentdataGridView1.RowHeadersWidth = 62;
             this.AppointmentdataGridView1.RowTemplate.Height = 28;
-            this.AppointmentdataGridView1.Size = new System.Drawing.Size(781, 164);
+            this.AppointmentdataGridView1.Size = new System.Drawing.Size(1172, 252);
             this.AppointmentdataGridView1.TabIndex = 0;
             // 
             // ViewByWeekRadioBtn
             // 
             this.ViewByWeekRadioBtn.AutoSize = true;
-            this.ViewByWeekRadioBtn.Location = new System.Drawing.Point(10, 8);
-            this.ViewByWeekRadioBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ViewByWeekRadioBtn.Location = new System.Drawing.Point(152, 12);
             this.ViewByWeekRadioBtn.Name = "ViewByWeekRadioBtn";
-            this.ViewByWeekRadioBtn.Size = new System.Drawing.Size(94, 17);
+            this.ViewByWeekRadioBtn.Size = new System.Drawing.Size(133, 24);
             this.ViewByWeekRadioBtn.TabIndex = 1;
-            this.ViewByWeekRadioBtn.TabStop = true;
             this.ViewByWeekRadioBtn.Text = "View by Week";
             this.ViewByWeekRadioBtn.UseVisualStyleBackColor = true;
+            this.ViewByWeekRadioBtn.CheckedChanged += new System.EventHandler(this.ViewByWeekRadioBtn_CheckedChanged);
             // 
             // ViewByMonthRadioBtn
             // 
             this.ViewByMonthRadioBtn.AutoSize = true;
-            this.ViewByMonthRadioBtn.Location = new System.Drawing.Point(103, 8);
-            this.ViewByMonthRadioBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ViewByMonthRadioBtn.Location = new System.Drawing.Point(291, 12);
             this.ViewByMonthRadioBtn.Name = "ViewByMonthRadioBtn";
-            this.ViewByMonthRadioBtn.Size = new System.Drawing.Size(95, 17);
+            this.ViewByMonthRadioBtn.Size = new System.Drawing.Size(137, 24);
             this.ViewByMonthRadioBtn.TabIndex = 2;
-            this.ViewByMonthRadioBtn.TabStop = true;
             this.ViewByMonthRadioBtn.Text = "View by Month";
             this.ViewByMonthRadioBtn.UseVisualStyleBackColor = true;
+            this.ViewByMonthRadioBtn.CheckedChanged += new System.EventHandler(this.ViewByMonthRadioBtn_CheckedChanged);
             // 
             // AddApointmentBtn
             // 
-            this.AddApointmentBtn.Location = new System.Drawing.Point(207, 252);
-            this.AddApointmentBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.AddApointmentBtn.Location = new System.Drawing.Point(310, 388);
             this.AddApointmentBtn.Name = "AddApointmentBtn";
-            this.AddApointmentBtn.Size = new System.Drawing.Size(184, 36);
+            this.AddApointmentBtn.Size = new System.Drawing.Size(276, 55);
             this.AddApointmentBtn.TabIndex = 3;
             this.AddApointmentBtn.Text = "Add Appointment";
             this.AddApointmentBtn.UseVisualStyleBackColor = true;
@@ -92,10 +89,9 @@ namespace C969_Project
             // 
             // ModifyAppointmentBtn
             // 
-            this.ModifyAppointmentBtn.Location = new System.Drawing.Point(207, 211);
-            this.ModifyAppointmentBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ModifyAppointmentBtn.Location = new System.Drawing.Point(310, 325);
             this.ModifyAppointmentBtn.Name = "ModifyAppointmentBtn";
-            this.ModifyAppointmentBtn.Size = new System.Drawing.Size(184, 36);
+            this.ModifyAppointmentBtn.Size = new System.Drawing.Size(276, 55);
             this.ModifyAppointmentBtn.TabIndex = 4;
             this.ModifyAppointmentBtn.Text = "Modify Appointment";
             this.ModifyAppointmentBtn.UseVisualStyleBackColor = true;
@@ -103,10 +99,9 @@ namespace C969_Project
             // 
             // DeleteAppointmentBtn
             // 
-            this.DeleteAppointmentBtn.Location = new System.Drawing.Point(10, 211);
-            this.DeleteAppointmentBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.DeleteAppointmentBtn.Location = new System.Drawing.Point(15, 325);
             this.DeleteAppointmentBtn.Name = "DeleteAppointmentBtn";
-            this.DeleteAppointmentBtn.Size = new System.Drawing.Size(184, 36);
+            this.DeleteAppointmentBtn.Size = new System.Drawing.Size(276, 55);
             this.DeleteAppointmentBtn.TabIndex = 5;
             this.DeleteAppointmentBtn.Text = "Delete Appointment";
             this.DeleteAppointmentBtn.UseVisualStyleBackColor = true;
@@ -114,48 +109,44 @@ namespace C969_Project
             // 
             // AppointmentTypesByMonthReportFormBtn
             // 
-            this.AppointmentTypesByMonthReportFormBtn.Location = new System.Drawing.Point(395, 211);
-            this.AppointmentTypesByMonthReportFormBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.AppointmentTypesByMonthReportFormBtn.Location = new System.Drawing.Point(592, 325);
             this.AppointmentTypesByMonthReportFormBtn.Name = "AppointmentTypesByMonthReportFormBtn";
-            this.AppointmentTypesByMonthReportFormBtn.Size = new System.Drawing.Size(184, 36);
+            this.AppointmentTypesByMonthReportFormBtn.Size = new System.Drawing.Size(276, 55);
             this.AppointmentTypesByMonthReportFormBtn.TabIndex = 6;
             this.AppointmentTypesByMonthReportFormBtn.Text = "Appointment Types By Month Report";
             this.AppointmentTypesByMonthReportFormBtn.UseVisualStyleBackColor = true;
             // 
             // ConsultantReportBtn
             // 
-            this.ConsultantReportBtn.Location = new System.Drawing.Point(395, 252);
-            this.ConsultantReportBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ConsultantReportBtn.Location = new System.Drawing.Point(592, 388);
             this.ConsultantReportBtn.Name = "ConsultantReportBtn";
-            this.ConsultantReportBtn.Size = new System.Drawing.Size(184, 36);
+            this.ConsultantReportBtn.Size = new System.Drawing.Size(276, 55);
             this.ConsultantReportBtn.TabIndex = 7;
             this.ConsultantReportBtn.Text = "Consultant Schedule Report ";
             this.ConsultantReportBtn.UseVisualStyleBackColor = true;
             // 
             // CustomerReportBtn
             // 
-            this.CustomerReportBtn.Location = new System.Drawing.Point(395, 292);
-            this.CustomerReportBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.CustomerReportBtn.Location = new System.Drawing.Point(592, 449);
             this.CustomerReportBtn.Name = "CustomerReportBtn";
-            this.CustomerReportBtn.Size = new System.Drawing.Size(184, 38);
+            this.CustomerReportBtn.Size = new System.Drawing.Size(276, 58);
             this.CustomerReportBtn.TabIndex = 8;
             this.CustomerReportBtn.Text = "Customer Report";
             this.CustomerReportBtn.UseVisualStyleBackColor = true;
             // 
             // AppointmentMonthCalendar1
             // 
-            this.AppointmentMonthCalendar1.Location = new System.Drawing.Point(582, 211);
-            this.AppointmentMonthCalendar1.Margin = new System.Windows.Forms.Padding(6);
+            this.AppointmentMonthCalendar1.Location = new System.Drawing.Point(873, 325);
             this.AppointmentMonthCalendar1.Name = "AppointmentMonthCalendar1";
             this.AppointmentMonthCalendar1.TabIndex = 9;
             this.AppointmentMonthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.AppointmentMonthCalendar1_DateChanged);
+            this.AppointmentMonthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.AppointmentMonthCalendar1_DateSelected);
             // 
             // returntorecordsbtn
             // 
-            this.returntorecordsbtn.Location = new System.Drawing.Point(8, 304);
-            this.returntorecordsbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.returntorecordsbtn.Location = new System.Drawing.Point(12, 468);
             this.returntorecordsbtn.Name = "returntorecordsbtn";
-            this.returntorecordsbtn.Size = new System.Drawing.Size(184, 32);
+            this.returntorecordsbtn.Size = new System.Drawing.Size(276, 49);
             this.returntorecordsbtn.TabIndex = 10;
             this.returntorecordsbtn.Text = "Return to Records";
             this.returntorecordsbtn.UseVisualStyleBackColor = true;
@@ -163,20 +154,33 @@ namespace C969_Project
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Location = new System.Drawing.Point(10, 343);
-            this.ExitBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ExitBtn.Location = new System.Drawing.Point(15, 528);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(184, 32);
+            this.ExitBtn.Size = new System.Drawing.Size(276, 49);
             this.ExitBtn.TabIndex = 11;
             this.ExitBtn.Text = "Exit Applicaiton";
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
+            // dayradioButton1
+            // 
+            this.dayradioButton1.AutoSize = true;
+            this.dayradioButton1.Checked = true;
+            this.dayradioButton1.Location = new System.Drawing.Point(15, 12);
+            this.dayradioButton1.Name = "dayradioButton1";
+            this.dayradioButton1.Size = new System.Drawing.Size(120, 24);
+            this.dayradioButton1.TabIndex = 12;
+            this.dayradioButton1.TabStop = true;
+            this.dayradioButton1.Text = "View by Day";
+            this.dayradioButton1.UseVisualStyleBackColor = true;
+            this.dayradioButton1.CheckedChanged += new System.EventHandler(this.dayradioButton1_CheckedChanged);
+            // 
             // AppointmentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 380);
+            this.ClientSize = new System.Drawing.Size(1314, 585);
+            this.Controls.Add(this.dayradioButton1);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.returntorecordsbtn);
             this.Controls.Add(this.AppointmentMonthCalendar1);
@@ -189,7 +193,6 @@ namespace C969_Project
             this.Controls.Add(this.ViewByMonthRadioBtn);
             this.Controls.Add(this.ViewByWeekRadioBtn);
             this.Controls.Add(this.AppointmentdataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AppointmentForm";
             this.Text = "AppointmentForm";
             ((System.ComponentModel.ISupportInitialize)(this.AppointmentdataGridView1)).EndInit();
@@ -212,5 +215,6 @@ namespace C969_Project
         private System.Windows.Forms.MonthCalendar AppointmentMonthCalendar1;
         private System.Windows.Forms.Button returntorecordsbtn;
         private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.RadioButton dayradioButton1;
     }
 }

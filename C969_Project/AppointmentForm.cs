@@ -21,24 +21,40 @@ namespace C969_Project
         {
             InitializeComponent();
             currdt = DateTime.Now;
-            AppointmentMonthCalendar1.AddBoldedDate(currdt);
-            Day();
+            day();
             
+        }
+
+        private void day()
+        {
+            //currdt = AppointmentMonthCalendar1.SelectionStart;
+            AppointmentMonthCalendar1.RemoveAllBoldedDates();
+            AppointmentMonthCalendar1.AddBoldedDate(currdt);
+            AppointmentMonthCalendar1.UpdateBoldedDates();
+            table.Clear();
+            string date = currdt.ToString("yyyy-MM-dd");
+            string sqlcmd = $"SELECT * FROM appointment WHERE start = DATE({date})";
+            MySqlCommand command = new MySqlCommand(sqlcmd, DataClass.sqlConnection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(table);
+            AppointmentdataGridView1.DataSource = table;
+            DataClass.sqlConnection.Close();
+
         }
         private void week()
         {
             AppointmentMonthCalendar1.RemoveAllBoldedDates();
             table.Clear();
             int dw = (int)currdt.DayOfWeek;
-            string start = currdt.AddDays(-dw).ToString();
+            string start = currdt.AddDays(-dw).ToString("yyyy-MM-dd");
             DateTime temp = Convert.ToDateTime(start);
             for (int i =0; i<7; i++)
             {
                 AppointmentMonthCalendar1.AddBoldedDate(temp.AddDays(i));
             }
             AppointmentMonthCalendar1.UpdateBoldedDates();
-            string end = currdt.AddDays(7 - dw).ToString();
-            string sqlcmd = $"SELECT * FROM appointment WHERE start BETWEEN = DATE('{start}') AND DATE('{end}')";
+            string end = currdt.AddDays(7 - dw).ToString("yyyy-MM-dd");
+            string sqlcmd = $"SELECT * FROM appointment WHERE start BETWEEN  {start} AND {end}";
             DataClass.sqlConnection.Open();
             MySqlCommand command = new MySqlCommand(sqlcmd, DataClass.sqlConnection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
@@ -52,8 +68,52 @@ namespace C969_Project
             AppointmentMonthCalendar1.RemoveAllBoldedDates();
             AppointmentMonthCalendar1.AddBoldedDate(currdt);
             table.Clear();
-            string sqlcmd = $"SELECT * FROM appointment WHERE start = DATE('{currdt}')";
+            string sqlcmd = $"SELECT * FROM appointment WHERE start = DATE({currdt})";
             DataClass.sqlConnection.Open();           
+            MySqlCommand command = new MySqlCommand(sqlcmd, DataClass.sqlConnection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(table);
+            AppointmentdataGridView1.DataSource = table;
+            DataClass.sqlConnection.Close();
+        }
+
+        private void Month()
+        {
+            AppointmentMonthCalendar1.RemoveAllBoldedDates();
+            table.Clear();
+            int month = currdt.Month;
+            int year = currdt.Year;
+            int day = 0;
+            string start = month.ToString() + "/01/" + year.ToString();
+            DateTime temp = Convert.ToDateTime(start);
+            switch (month)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                    day = 31;
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    day = 30;
+                    break;
+                default:
+                    day = 29;
+                    break;
+            }
+            for (int i = 0; i < day; i++)
+            {
+                AppointmentMonthCalendar1.AddAnnuallyBoldedDate(temp.AddDays(i));
+            }
+            AppointmentMonthCalendar1.UpdateBoldedDates();
+            string end = month.ToString() + "/" + day.ToString() + "/" + year.ToString();
+            string sqlcmd = $"SELECT * FROM appointment WHERE start BETWEEN DATE({start}) AND DATE({end})";
+            DataClass.sqlConnection.Open();
             MySqlCommand command = new MySqlCommand(sqlcmd, DataClass.sqlConnection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(table);
@@ -124,8 +184,42 @@ namespace C969_Project
 
         private void AppointmentMonthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            currdt = AppointmentMonthCalendar1.SelectionStart;
-            Day();
+            
+        }
+
+        private void dayradioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            day();
+        }
+
+        private void ViewByWeekRadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            week();
+        }
+
+        private void ViewByMonthRadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            Month();
+        }
+
+        private void AppointmentMonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            currdt = e.Start;
+            if (ViewByMonthRadioBtn.Checked)
+            {
+                Month();
+            }
+            else
+            {
+                if (ViewByWeekRadioBtn.Checked)
+                {
+                    week();
+                }
+                else
+                {
+                    day();
+                }
+            }
         }
     }
 }
