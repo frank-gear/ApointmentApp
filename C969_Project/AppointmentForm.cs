@@ -63,8 +63,8 @@ namespace C969_Project
             DataClass.sqlConnection.Close();
 
         }
-   
 
+        Công Ty TNHH Thương Mại GearVN
         private void Month()
         {
             AppointmentMonthCalendar1.RemoveAllBoldedDates();
