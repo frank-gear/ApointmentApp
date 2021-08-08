@@ -28,12 +28,16 @@ namespace C969_Project
             int id = DataClass.DataId(sqlcmd);            
             DataTable table = new DataTable();
             DataClass.sqlConnection.Open();
-            string sqlcon = $"SELECT appointmentId, customerId, type,start,end FROM appointment WHERE userId = {id}";
+            string sqlcon = $"SELECT appointmentId, customerId, type,start FROM appointment WHERE userId = {id}";
             MySqlCommand command = new MySqlCommand(sqlcon, DataClass.sqlConnection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(table);
            ConsultantReportDataGridView.DataSource = table;
             DataClass.sqlConnection.Close();
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                table.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)table.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+            }
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)

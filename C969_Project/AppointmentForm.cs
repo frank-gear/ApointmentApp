@@ -39,6 +39,10 @@ namespace C969_Project
             adapter.Fill(table);
             AppointmentdataGridView1.DataSource = table;
             DataClass.sqlConnection.Close();
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                table.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)table.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+            }
 
         }
         private void week()
@@ -61,7 +65,10 @@ namespace C969_Project
             adapter.Fill(table);
             AppointmentdataGridView1.DataSource = table;
             DataClass.sqlConnection.Close();
-
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                table.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)table.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+            }
         }
 
 
@@ -107,6 +114,10 @@ namespace C969_Project
             adapter.Fill(table);
             AppointmentdataGridView1.DataSource = table;
             DataClass.sqlConnection.Close();
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                table.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)table.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+            }
         }
         private void ConnectData()
         {

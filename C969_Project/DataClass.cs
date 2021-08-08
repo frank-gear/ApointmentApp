@@ -112,11 +112,12 @@ namespace C969_Project
             DateTime time = Convert.ToDateTime(DateTime.UtcNow).AddMinutes(30);
             string time2 = time1.ToString("yyyy-MM-dd HH:mm:ss");
             string timeEnd = time.ToString("yyyy-MM-dd HH:mm:ss");
+
             string[] appointment =
             {
               "INSERT INTO `appointment` VALUES (1,1,1,'not needed','not needed','not needed','not needed','Presentation','not needed','2021-07-01 00:00:00','2021-07-01 00:00:00','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
               "INSERT INTO `appointment` VALUES (2,2,1,'not needed','not needed','not needed','not needed','Interview','not needed','2021-07-01 00:00:00','2021-07-01 00:00:00','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
-              $"INSERT INTO `appointment` VALUES (3,3,1,'not needed','not needed','not needed','not needed','Scrum','not needed','{time2}','{timeEnd}','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')"
+              $"INSERT INTO `appointment` VALUES (3,3,1,'not needed','not needed','not needed','not needed','Scrum','not needed','{time2}','{timeEnd}','2021-01-01 00:00:00','test','2019-01-01 00:00:00','test')"
 
             };
             DataWrite(appointment[0]);
