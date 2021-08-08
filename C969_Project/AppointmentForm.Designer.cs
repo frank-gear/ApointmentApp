@@ -115,6 +115,7 @@ namespace C969_Project
             this.AppointmentTypesByMonthReportFormBtn.TabIndex = 6;
             this.AppointmentTypesByMonthReportFormBtn.Text = "Appointment Types By Month Report";
             this.AppointmentTypesByMonthReportFormBtn.UseVisualStyleBackColor = true;
+            this.AppointmentTypesByMonthReportFormBtn.Click += new System.EventHandler(this.AppointmentTypesByMonthReportFormBtn_Click);
             // 
             // ConsultantReportBtn
             // 
@@ -124,6 +125,7 @@ namespace C969_Project
             this.ConsultantReportBtn.TabIndex = 7;
             this.ConsultantReportBtn.Text = "Consultant Schedule Report ";
             this.ConsultantReportBtn.UseVisualStyleBackColor = true;
+            this.ConsultantReportBtn.Click += new System.EventHandler(this.ConsultantReportBtn_Click);
             // 
             // CustomerReportBtn
             // 
@@ -131,8 +133,9 @@ namespace C969_Project
             this.CustomerReportBtn.Name = "CustomerReportBtn";
             this.CustomerReportBtn.Size = new System.Drawing.Size(276, 58);
             this.CustomerReportBtn.TabIndex = 8;
-            this.CustomerReportBtn.Text = "Customer Report";
+            this.CustomerReportBtn.Text = "Cities with Customers Report";
             this.CustomerReportBtn.UseVisualStyleBackColor = true;
+            this.CustomerReportBtn.Click += new System.EventHandler(this.CustomerReportBtn_Click);
             // 
             // AppointmentMonthCalendar1
             // 

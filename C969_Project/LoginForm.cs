@@ -17,7 +17,7 @@ namespace C969_Project
     public partial class LoginForm : Form
     {
        private string err;
-               
+        public static string usrLogin;       
         private static string fileName = "UserLog.txt";
         private static FileStream file = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write);
         private StreamWriter fileWriter = new StreamWriter(file);
@@ -52,6 +52,7 @@ namespace C969_Project
             {
                 DataClass.sqlConnection.Close();
                 string user = UserIdTextBox.Text;
+                usrLogin = UserIdTextBox.Text;
                 string sqlcmd = $"SELECT userId FROM user WHERE userName ='{user}'";
                 int usserid = DataClass.DataId(sqlcmd);
                 DateTime stamp = DateTime.UtcNow;

@@ -115,7 +115,7 @@ namespace C969_Project
             string[] appointment =
             {
               "INSERT INTO `appointment` VALUES (1,1,1,'not needed','not needed','not needed','not needed','Presentation','not needed','2021-07-01 00:00:00','2021-07-01 00:00:00','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
-              "INSERT INTO `appointment` VALUES (2,2,1,'not needed','not needed','not needed','not needed','Scrum','not needed','2021-07-01 00:00:00','2021-07-01 00:00:00','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
+              "INSERT INTO `appointment` VALUES (2,2,1,'not needed','not needed','not needed','not needed','Interview','not needed','2021-07-01 00:00:00','2021-07-01 00:00:00','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
               $"INSERT INTO `appointment` VALUES (3,3,1,'not needed','not needed','not needed','not needed','Scrum','not needed','{time2}','{timeEnd}','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')"
 
             };

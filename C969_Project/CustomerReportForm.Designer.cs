@@ -50,9 +50,9 @@ namespace C969_Project
             this.CustomerReportlabel.AutoSize = true;
             this.CustomerReportlabel.Location = new System.Drawing.Point(24, 40);
             this.CustomerReportlabel.Name = "CustomerReportlabel";
-            this.CustomerReportlabel.Size = new System.Drawing.Size(131, 20);
+            this.CustomerReportlabel.Size = new System.Drawing.Size(158, 20);
             this.CustomerReportlabel.TabIndex = 1;
-            this.CustomerReportlabel.Text = "Customer Report";
+            this.CustomerReportlabel.Text = "Cities with customers";
             // 
             // ExitBtn
             // 
@@ -62,6 +62,7 @@ namespace C969_Project
             this.ExitBtn.TabIndex = 2;
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // CustomerReportForm
             // 

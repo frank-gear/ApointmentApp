@@ -64,7 +64,7 @@ namespace C969_Project
 
         }
 
-        Công Ty TNHH Thương Mại GearVN
+
         private void Month()
         {
             AppointmentMonthCalendar1.RemoveAllBoldedDates();
@@ -208,6 +208,27 @@ namespace C969_Project
                     day();
                 }
             }
+        }
+
+        private void ConsultantReportBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ConsultantReportForm consultantReportForm = new ConsultantReportForm();
+            consultantReportForm.Show();
+        }
+
+        private void AppointmentTypesByMonthReportFormBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AppointmentTypesByMonthReportForm appointmentTypesByMonthReportForm = new AppointmentTypesByMonthReportForm();
+            appointmentTypesByMonthReportForm.Show();
+        }
+
+        private void CustomerReportBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            CustomerReportForm customerReportForm = new CustomerReportForm();
+            customerReportForm.Show();
         }
     }
 }
