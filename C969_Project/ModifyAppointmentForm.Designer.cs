@@ -34,19 +34,18 @@ namespace C969_Project
             this.TitleOfAppointmentTextBox = new System.Windows.Forms.TextBox();
             this.StartOfAppointmentDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.EndOfAppointmentDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.TypeOfAppointmentTextBox = new System.Windows.Forms.TextBox();
             this.EndTimeofAppointmentLabel = new System.Windows.Forms.Label();
             this.StartTimeOfAppointmentLabel = new System.Windows.Forms.Label();
             this.TypeOfAppointmentLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
+            this.typelistBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Location = new System.Drawing.Point(149, 247);
-            this.CancelBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.CancelBtn.Location = new System.Drawing.Point(224, 380);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(116, 40);
+            this.CancelBtn.Size = new System.Drawing.Size(174, 62);
             this.CancelBtn.TabIndex = 23;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
@@ -54,10 +53,9 @@ namespace C969_Project
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(11, 247);
-            this.SaveBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.SaveBtn.Location = new System.Drawing.Point(16, 380);
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(116, 40);
+            this.SaveBtn.Size = new System.Drawing.Size(174, 62);
             this.SaveBtn.TabIndex = 22;
             this.SaveBtn.Text = "Save";
             this.SaveBtn.UseVisualStyleBackColor = true;
@@ -65,95 +63,91 @@ namespace C969_Project
             // 
             // TitleOfAppointmentTextBox
             // 
-            this.TitleOfAppointmentTextBox.Location = new System.Drawing.Point(149, 48);
-            this.TitleOfAppointmentTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.TitleOfAppointmentTextBox.Location = new System.Drawing.Point(224, 74);
             this.TitleOfAppointmentTextBox.Name = "TitleOfAppointmentTextBox";
-            this.TitleOfAppointmentTextBox.Size = new System.Drawing.Size(231, 20);
+            this.TitleOfAppointmentTextBox.Size = new System.Drawing.Size(344, 26);
             this.TitleOfAppointmentTextBox.TabIndex = 20;
             // 
             // StartOfAppointmentDateTimePicker
             // 
             this.StartOfAppointmentDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
-            this.StartOfAppointmentDateTimePicker.Location = new System.Drawing.Point(149, 142);
-            this.StartOfAppointmentDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
+            this.StartOfAppointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.StartOfAppointmentDateTimePicker.Location = new System.Drawing.Point(224, 252);
             this.StartOfAppointmentDateTimePicker.Name = "StartOfAppointmentDateTimePicker";
-            this.StartOfAppointmentDateTimePicker.Size = new System.Drawing.Size(231, 20);
+            this.StartOfAppointmentDateTimePicker.Size = new System.Drawing.Size(344, 26);
             this.StartOfAppointmentDateTimePicker.TabIndex = 19;
             // 
             // EndOfAppointmentDateTimePicker
             // 
             this.EndOfAppointmentDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
-            this.EndOfAppointmentDateTimePicker.Location = new System.Drawing.Point(149, 188);
-            this.EndOfAppointmentDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
+            this.EndOfAppointmentDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.EndOfAppointmentDateTimePicker.Location = new System.Drawing.Point(224, 323);
             this.EndOfAppointmentDateTimePicker.Name = "EndOfAppointmentDateTimePicker";
-            this.EndOfAppointmentDateTimePicker.Size = new System.Drawing.Size(231, 20);
+            this.EndOfAppointmentDateTimePicker.Size = new System.Drawing.Size(344, 26);
             this.EndOfAppointmentDateTimePicker.TabIndex = 18;
             this.EndOfAppointmentDateTimePicker.Value = new System.DateTime(2021, 6, 11, 0, 0, 0, 0);
-            // 
-            // TypeOfAppointmentTextBox
-            // 
-            this.TypeOfAppointmentTextBox.Location = new System.Drawing.Point(149, 94);
-            this.TypeOfAppointmentTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.TypeOfAppointmentTextBox.Name = "TypeOfAppointmentTextBox";
-            this.TypeOfAppointmentTextBox.Size = new System.Drawing.Size(231, 20);
-            this.TypeOfAppointmentTextBox.TabIndex = 17;
             // 
             // EndTimeofAppointmentLabel
             // 
             this.EndTimeofAppointmentLabel.AutoSize = true;
-            this.EndTimeofAppointmentLabel.Location = new System.Drawing.Point(8, 188);
-            this.EndTimeofAppointmentLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.EndTimeofAppointmentLabel.Location = new System.Drawing.Point(12, 323);
             this.EndTimeofAppointmentLabel.Name = "EndTimeofAppointmentLabel";
-            this.EndTimeofAppointmentLabel.Size = new System.Drawing.Size(126, 13);
+            this.EndTimeofAppointmentLabel.Size = new System.Drawing.Size(189, 20);
             this.EndTimeofAppointmentLabel.TabIndex = 16;
             this.EndTimeofAppointmentLabel.Text = "End Time of Appointment";
             // 
             // StartTimeOfAppointmentLabel
             // 
             this.StartTimeOfAppointmentLabel.AutoSize = true;
-            this.StartTimeOfAppointmentLabel.Location = new System.Drawing.Point(8, 142);
-            this.StartTimeOfAppointmentLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.StartTimeOfAppointmentLabel.Location = new System.Drawing.Point(12, 252);
             this.StartTimeOfAppointmentLabel.Name = "StartTimeOfAppointmentLabel";
-            this.StartTimeOfAppointmentLabel.Size = new System.Drawing.Size(129, 13);
+            this.StartTimeOfAppointmentLabel.Size = new System.Drawing.Size(195, 20);
             this.StartTimeOfAppointmentLabel.TabIndex = 15;
             this.StartTimeOfAppointmentLabel.Text = "Start Time of Appointment";
             // 
             // TypeOfAppointmentLabel
             // 
             this.TypeOfAppointmentLabel.AutoSize = true;
-            this.TypeOfAppointmentLabel.Location = new System.Drawing.Point(8, 94);
-            this.TypeOfAppointmentLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TypeOfAppointmentLabel.Location = new System.Drawing.Point(12, 145);
             this.TypeOfAppointmentLabel.Name = "TypeOfAppointmentLabel";
-            this.TypeOfAppointmentLabel.Size = new System.Drawing.Size(105, 13);
+            this.TypeOfAppointmentLabel.Size = new System.Drawing.Size(156, 20);
             this.TypeOfAppointmentLabel.TabIndex = 14;
             this.TypeOfAppointmentLabel.Text = "Type of Appointment";
             // 
             // TitleLabel
             // 
             this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Location = new System.Drawing.Point(8, 48);
-            this.TitleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TitleLabel.Location = new System.Drawing.Point(12, 74);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(101, 13);
+            this.TitleLabel.Size = new System.Drawing.Size(151, 20);
             this.TitleLabel.TabIndex = 13;
             this.TitleLabel.Text = "Title of Appointment";
             // 
+            // typelistBox1
+            // 
+            this.typelistBox1.FormattingEnabled = true;
+            this.typelistBox1.ItemHeight = 20;
+            this.typelistBox1.Location = new System.Drawing.Point(224, 145);
+            this.typelistBox1.Name = "typelistBox1";
+            this.typelistBox1.ScrollAlwaysVisible = true;
+            this.typelistBox1.Size = new System.Drawing.Size(344, 84);
+            this.typelistBox1.TabIndex = 24;
+            // 
             // ModifyAppointmentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 292);
+            this.ClientSize = new System.Drawing.Size(899, 449);
+            this.Controls.Add(this.typelistBox1);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.TitleOfAppointmentTextBox);
             this.Controls.Add(this.StartOfAppointmentDateTimePicker);
             this.Controls.Add(this.EndOfAppointmentDateTimePicker);
-            this.Controls.Add(this.TypeOfAppointmentTextBox);
             this.Controls.Add(this.EndTimeofAppointmentLabel);
             this.Controls.Add(this.StartTimeOfAppointmentLabel);
             this.Controls.Add(this.TypeOfAppointmentLabel);
             this.Controls.Add(this.TitleLabel);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ModifyAppointmentForm";
             this.Text = "ModifyAppointmentForm";
             this.ResumeLayout(false);
@@ -168,10 +162,10 @@ namespace C969_Project
         private System.Windows.Forms.TextBox TitleOfAppointmentTextBox;
         private System.Windows.Forms.DateTimePicker StartOfAppointmentDateTimePicker;
         private System.Windows.Forms.DateTimePicker EndOfAppointmentDateTimePicker;
-        private System.Windows.Forms.TextBox TypeOfAppointmentTextBox;
         private System.Windows.Forms.Label EndTimeofAppointmentLabel;
         private System.Windows.Forms.Label StartTimeOfAppointmentLabel;
         private System.Windows.Forms.Label TypeOfAppointmentLabel;
         private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.ListBox typelistBox1;
     }
 }

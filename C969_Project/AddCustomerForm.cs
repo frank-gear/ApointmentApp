@@ -31,12 +31,30 @@ namespace C969_Project
             DataClass.sqlConnection.Close();
 
         }
+        private delegate bool CheckName(string name);
 
+        
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            //created this lambda to check for invalid customer names
-            Func<string, bool> func = x =>  (x == CustomerNameTextBox.Text);
-                
+            
+            
+            bool namelist()
+            {
+                //created this lambda to check for invalid customer names
+                CheckName checkName = x => (x == CustomerNameTextBox.Text);
+                for (int i = 0; i < customerNameList.Count; i++)
+                {
+                    if (checkName(customerNameList[i]))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+
+            }
+
+                      
+            
             if (CustomerNameTextBox.Text == "" || StreetTextBox.Text == "" || ZipCodeTextBox.Text == "" || PhoneNumberTextBox.Text == "")
             {
                 string err = "Invalid entry. Customer data is missing. ";
@@ -47,8 +65,8 @@ namespace C969_Project
             
             
                 
-                //invalid customer info check
-            else if (customerNameList.All(func))
+            //invalid customer info check
+            else if (namelist())
             {
                 string err = "Invalid entry. This Customer already exist. ";
                 MessageBox.Show(err);

@@ -36,7 +36,9 @@ namespace C969_Project
 
         public static MySqlDataReader DataRead(string command)
         {
-            sqlConnection.Open();
+             sqlConnection.Close();
+             sqlConnection.Open(); 
+            
             MySqlCommand build = new MySqlCommand(command, sqlConnection);
             return build.ExecuteReader();
 
@@ -197,17 +199,17 @@ namespace C969_Project
             DataWrite(addcust);
 
         }
-        public static void ModifyAppointment(int appid, string title, string type, DateTime start, DateTime end)
+        public static void ModifyAppointment(int appid, string title, string type, string start, string end)
         {
             string sqlcmd = $"UPDATE appointment set title='{title}', type = '{type}', start ='{start}', end = '{end}' WHERE appointmentId = '{appid}'";
             DataWrite(sqlcmd);
         }
 
-        public static void AddNewAppointment(int custid, string title, string type, DateTime start, DateTime end)
+        public static void AddNewAppointment(int custid, string title, string type, string start, string end)
         {
             string addcount = "SELECT COUNT(*) FROM appointment";
             int appid = DataId(addcount) + 1;
-            string sqlcmd = $"INSERT INTO `appointment` VALUES ('{appid}','{custid}',1,'{title}','not needed','not needed','not needed','{type}','not needed','{start}','{end}','{DateTime.UtcNow}','test','{DateTime.UtcNow}','test')";
+            string sqlcmd = $"INSERT INTO `appointment` VALUES ('{appid}','{custid}',1,'{title}','not needed','not needed','not needed','{type}','not needed','{start}','{end}','{CurDate()}','test','{CurDate()}','test')";
             DataWrite(sqlcmd);
         }
         public static void AppointmentAlert()
