@@ -33,18 +33,36 @@ namespace C969_Project
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            Func<DateTime, string> convert = x => x.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
-            string selected = customerlistBox1.SelectedItem.ToString();
-            string sqlcmd1 = $"SELECT customerId FROM customer WHERE customerName = '{selected}'";
-            int custId = DataClass.DataId(sqlcmd1);
-            string title = TitleOfAppointmentTextBox.Text;
-            string type = TypelistBox1.Text;
-            DateTime start = StartOfAppointmentDateTimePicker.Value.ToLocalTime();
-            DateTime end = EndOfAppointmentDateTimePicker.Value.ToLocalTime();
-            DataClass.AddNewAppointment(custId, title, type, convert(start), convert(end));
-            this.Close();
-            AppointmentForm appointmentForm = new AppointmentForm();
-            appointmentForm.Show();
+            DateTime startcheck = DateTime.Today.AddHours(10);
+            if (StartOfAppointmentDateTimePicker.Value.TimeOfDay < startcheck.TimeOfDay)
+            {
+                MessageBox.Show("Office hours start at 10 please pick a later start time");
+            }
+            DateTime endcheck = DateTime.Today.AddHours(19);
+            if (EndOfAppointmentDateTimePicker.Value.TimeOfDay > endcheck.TimeOfDay)
+            {
+                MessageBox.Show("Office hours end at 7 please pick an earlier end time");
+            }
+            if (DataClass.AppointmentOverlap(StartOfAppointmentDateTimePicker.Value, EndOfAppointmentDateTimePicker.Value))
+            {
+                MessageBox.Show("The selected time is in conflict with an existing appointment please choose a different time");
+            }
+
+            else
+            {
+                Func<DateTime, string> convert = x => x.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                string selected = customerlistBox1.SelectedItem.ToString();
+                string sqlcmd1 = $"SELECT customerId FROM customer WHERE customerName = '{selected}'";
+                int custId = DataClass.DataId(sqlcmd1);
+                string title = TitleOfAppointmentTextBox.Text;
+                string type = TypelistBox1.Text;
+                DateTime start = StartOfAppointmentDateTimePicker.Value.ToLocalTime();
+                DateTime end = EndOfAppointmentDateTimePicker.Value.ToLocalTime();
+                DataClass.AddNewAppointment(custId, title, type, convert(start), convert(end));
+                this.Close();
+                AppointmentForm appointmentForm = new AppointmentForm();
+                appointmentForm.Show();
+            }
         }
 
         private void GetTypelist()

@@ -23,7 +23,8 @@ namespace C969_Project
     }
 }
 //notes 
-//need to figure out the date issue for add customer, modify appoint ment and add appointment 
+//overlap failing think its an issue with the local to utc conversion
 //custoemr delete is also failing due to some kind of foriegn key conflict
-//data check for custoemr name give a weird value to the lambda
 //utc to local seems to mess up the return
+//appoint data grid not updating correctly after delteing appoitment 
+// not sure about link in project requirments 

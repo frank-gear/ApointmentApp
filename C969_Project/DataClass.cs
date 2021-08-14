@@ -18,6 +18,7 @@ namespace C969_Project
 
         public static int DataId(string command)
         {
+            sqlConnection.Close();
             sqlConnection.Open();
             MySqlCommand build = new MySqlCommand(command, sqlConnection);
             int complete = Convert.ToInt32(build.ExecuteScalar());
@@ -211,6 +212,17 @@ namespace C969_Project
             int appid = DataId(addcount) + 1;
             string sqlcmd = $"INSERT INTO `appointment` VALUES ('{appid}','{custid}',1,'{title}','not needed','not needed','not needed','{type}','not needed','{start}','{end}','{CurDate()}','test','{CurDate()}','test')";
             DataWrite(sqlcmd);
+        }
+        public static bool AppointmentOverlap(DateTime start, DateTime end)
+        {
+            start = start.ToUniversalTime();
+            string strtchk = start.ToString("yyyy-MM-dd HH:mm:ss");
+            end = end.ToUniversalTime();
+            string endchk = end.ToString("yyyy-MM-dd HH:mm:ss");
+            string sqlcmd = $"SELECT * FROM appointment WHERE  start BETWEEN '{strtchk}' AND '{ endchk}';";
+            MySqlDataReader complete = DataRead(sqlcmd);
+            bool status = complete.HasRows;
+            return status;
         }
         public static void AppointmentAlert()
         {

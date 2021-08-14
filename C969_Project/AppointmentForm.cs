@@ -153,7 +153,9 @@ namespace C969_Project
                 {
                     string sqlcmd = $" DELETE FROM appointment WHERE appointmentId = '{setRow}'";
                     DataClass.DataWrite(sqlcmd);
-                    ConnectData();
+                    AppointmentdataGridView1.Rows.RemoveAt(AppointmentdataGridView1.CurrentCell.RowIndex);
+                    
+                  
 
                 }
             }
