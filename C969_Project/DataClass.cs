@@ -115,11 +115,16 @@ namespace C969_Project
             DateTime time = Convert.ToDateTime(DateTime.UtcNow).AddMinutes(30);
             string time2 = time1.ToString("yyyy-MM-dd HH:mm:ss");
             string timeEnd = time.ToString("yyyy-MM-dd HH:mm:ss");
+            DateTime st2 = DateTime.UtcNow.AddDays(7);
+            DateTime en2 = st2.AddMinutes(30);
+            DateTime st3 = DateTime.UtcNow.AddDays(3);
+            DateTime en3 = st3.AddMinutes(30);
+
 
             string[] appointment =
             {
-              "INSERT INTO `appointment` VALUES (1,1,1,'not needed','not needed','not needed','not needed','Presentation','not needed','2021-07-01 00:00:00','2021-07-01 00:00:00','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
-              "INSERT INTO `appointment` VALUES (2,2,1,'not needed','not needed','not needed','not needed','Interview','not needed','2021-07-01 00:00:00','2021-07-01 00:00:00','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
+              $"INSERT INTO `appointment` VALUES (1,1,1,'not needed','not needed','not needed','not needed','Presentation','not needed','{st3.ToString("yyyy-MM-dd HH:mm:ss")}','{en3.ToString("yyyy-MM-dd HH:mm:ss")}','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
+              $"INSERT INTO `appointment` VALUES (2,2,1,'not needed','not needed','not needed','not needed','Interview','not needed','{st2.ToString("yyyy-MM-dd HH:mm:ss")}','{en2.ToString("yyyy-MM-dd HH:mm:ss")}','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
               $"INSERT INTO `appointment` VALUES (3,3,1,'not needed','not needed','not needed','not needed','Scrum','not needed','{time2}','{timeEnd}','2021-01-01 00:00:00','test','2019-01-01 00:00:00','test')"
 
             };
@@ -142,9 +147,12 @@ namespace C969_Project
             string sqlcmd1 = $"DELETE FROM customer WHERE customerid = '{custid}'";
             string sqlcmd2 = $"DELETE FROM address WHERE addressid = '{addrid}'";
             string sqlcmd3 = $"DELETE FROM appointment WHERE customerid = '{custid}'";
+            DataWrite(sqlcmd3);
             DataWrite(sqlcmd1);
             DataWrite(sqlcmd2);
-            DataWrite(sqlcmd3);
+            
+            
+            
         }
         //get list of city names
         public static Array GetCityList()
@@ -190,8 +198,11 @@ namespace C969_Project
         public static void newCustomer(string custname, string address, int citid, string postal, string phone, int activ)
         {
             //get the count for address
+            //select max address id 
             string addcount = "SELECT COUNT(*) FROM address";
             int addid = DataId(addcount) + 1;
+            //select max address id 
+            //create new entries for each custumer for the cities and country
             string addsql = $"INSERT INTO address VALUES({addid},'{address}', ' ', {citid}, '{postal}', '{phone}', '{CurDate()}', 'test', '{CurDate()}', 'test')";
             DataWrite(addsql);
             string custcount = "SELECT COUNT(*) FROM customer";
@@ -219,7 +230,12 @@ namespace C969_Project
             string strtchk = start.ToString("yyyy-MM-dd HH:mm:ss");
             end = end.ToUniversalTime();
             string endchk = end.ToString("yyyy-MM-dd HH:mm:ss");
-            string sqlcmd = $"SELECT * FROM appointment WHERE  start BETWEEN '{strtchk}' AND '{ endchk}';";
+            //string sqlcmd = $"SELECT * FROM appointment WHERE  start BETWEEN '{strtchk}' AND '{ endchk}';";
+            string sqlcmd = $"SELECT * FROM appointment WHERE  (start >= '{strtchk}'  AND start < '{ endchk}')";
+            //end > startcheck and end <= startcheck
+            //start <= startcheck and end >= endcheck
+            //appointid != selected appointid
+            Console.WriteLine(sqlcmd);
             MySqlDataReader complete = DataRead(sqlcmd);
             bool status = complete.HasRows;
             return status;

@@ -34,6 +34,7 @@ namespace C969_Project
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             DateTime startcheck = DateTime.Today.AddHours(10);
+            //return after the messagebox
             if (StartOfAppointmentDateTimePicker.Value.TimeOfDay < startcheck.TimeOfDay)
             {
                 MessageBox.Show("Office hours start at 10 please pick a later start time");

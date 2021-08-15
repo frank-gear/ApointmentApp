@@ -30,7 +30,10 @@ namespace C969_Project
 
         private void lang()
         {
-            
+            //this may be a cultre class
+            CultureInfo C = CultureInfo.CurrentCulture;
+            string lang = C.TwoLetterISOLanguageName; //fr if lang == fr
+
             if (RegionInfo.CurrentRegion.DisplayName == "France")
             {
                 UserIdLabel.Text = "utilisatrice";
@@ -70,6 +73,7 @@ namespace C969_Project
                 MessageBox.Show(err);
                 UserIdTextBox.Text = "";
                 UserPasswordTextBox.Text = "";
+                // record the bad login 
             }
 
         }

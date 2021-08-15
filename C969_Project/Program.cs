@@ -26,5 +26,10 @@ namespace C969_Project
 //overlap failing think its an issue with the local to utc conversion
 //custoemr delete is also failing due to some kind of foriegn key conflict
 //utc to local seems to mess up the return
-//appoint data grid not updating correctly after delteing appoitment 
-// not sure about link in project requirments 
+// not sure about link in project requirments
+// list from the data reader such a type are returning all jumbled
+//things to do
+// update add customer country and city
+// pre fill the text boxs for the modify customer
+// change customer recod to customer count
+//change report month to textbox  or add all the months 
