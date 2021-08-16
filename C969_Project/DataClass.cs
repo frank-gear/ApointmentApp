@@ -147,6 +147,7 @@ namespace C969_Project
             DataWrite(appointment[0]);
             DataWrite(appointment[1]);
             DataWrite(appointment[2]);
+            DataWrite(appointment[3]);
         }
 
         public static bool UserLogin(string name, string pass)
