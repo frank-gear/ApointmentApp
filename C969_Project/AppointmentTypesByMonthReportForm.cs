@@ -35,22 +35,27 @@ namespace C969_Project
             sqlcmd = "SELECT COUNT(*) FROM appointment WHERE type = 'Scrum' AND MONTH(start) = 8";
             AugScrumtextBox3.Text = DataClass.DataId(sqlcmd).ToString();
 
-            //september
-            sqlcmd = "SELECT COUNT(*) FROM appointment WHERE type = 'Presentation' AND MONTH(start) = 9";
-            SeptPrestextBox6.Text = DataClass.DataId(sqlcmd).ToString();
-            sqlcmd = "SELECT COUNT(*) FROM appointment WHERE type = 'Interview' AND MONTH(start) = 9";
-            SeptInttextBox5.Text = DataClass.DataId(sqlcmd).ToString();
-            sqlcmd = "SELECT COUNT(*) FROM appointment WHERE type = 'Scrum' AND MONTH(start) = 9";
-            SeptScrumtextBox4.Text = DataClass.DataId(sqlcmd).ToString();
+           
 
-            //october
-            sqlcmd = "SELECT COUNT(*) FROM appointment WHERE type = 'Presentation' AND MONTH(start) = 10";
-            OctPrestextBox9.Text = DataClass.DataId(sqlcmd).ToString();
-            sqlcmd = "SELECT COUNT(*) FROM appointment WHERE type = 'Interview' AND MONTH(start) = 10";
-            OctInttextBox8.Text = DataClass.DataId(sqlcmd).ToString();
-            sqlcmd = "SELECT COUNT(*) FROM appointment WHERE type = 'Scrum' AND MONTH(start) = 10";
-            OctScrumtextBox7.Text = DataClass.DataId(sqlcmd).ToString();
+        }
 
+    
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+           
+
+        }
+
+        private void monthCalendar1_DateChanged_1(object sender, DateRangeEventArgs e)
+        {
+            int month = monthCalendar1.SelectionStart.Month;
+            string sqlcmd = $"SELECT COUNT(*) FROM appointment WHERE type = 'Presentation' AND MONTH(start) = {month}";
+            AugPrestextBox1.Text = DataClass.DataId(sqlcmd).ToString();
+            sqlcmd = $"SELECT COUNT(*) FROM appointment WHERE type = 'Interview' AND MONTH(start) = {month}";
+            AugInttextBox2.Text = DataClass.DataId(sqlcmd).ToString();
+            sqlcmd = $"SELECT COUNT(*) FROM appointment WHERE type = 'Scrum' AND MONTH(start) = {month}";
+            AugScrumtextBox3.Text = DataClass.DataId(sqlcmd).ToString();
         }
     }
 }

@@ -29,11 +29,11 @@ namespace C969_Project
         {
             //currdt = AppointmentMonthCalendar1.SelectionStart;
             AppointmentMonthCalendar1.RemoveAllBoldedDates();
-            AppointmentMonthCalendar1.AddBoldedDate(currdt);
-            AppointmentMonthCalendar1.UpdateBoldedDates();
+            //AppointmentMonthCalendar1.AddBoldedDate(currdt);
+            //AppointmentMonthCalendar1.UpdateBoldedDates();
             table.Clear();
             string date = currdt.ToString("yyyy-MM-dd");
-            string sqlcmd = $"SELECT * FROM appointment WHERE start like '{date}%'";
+            string sqlcmd = "SELECT appointment.appointmentId, appointment.title, appointment.type,  appointment.start, appointment.end,  customer.customerName, user.userName FROM((appointment INNER JOIN customer ON customer.customerId = appointment.customerId) INNER JOIN user ON appointment.userId = user.userId); "; //WHERE start like '{date}%'";
             MySqlCommand command = new MySqlCommand(sqlcmd, DataClass.sqlConnection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(table);
@@ -42,6 +42,7 @@ namespace C969_Project
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 table.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)table.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+                table.Rows[i]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)table.Rows[i]["end"], TimeZoneInfo.Local).ToString();
             }
 
         }
@@ -58,7 +59,7 @@ namespace C969_Project
             }
             AppointmentMonthCalendar1.UpdateBoldedDates();
             string end = currdt.AddDays(7 - dw).ToString("yyyy-MM-dd HH:mm:ss");
-            string sqlcmd = $"SELECT * FROM appointment WHERE start BETWEEN  '{start}' AND '{end}'";
+            string sqlcmd = $"SELECT appointment.appointmentId, appointment.title, appointment.type,  appointment.start, appointment.end,  customer.customerName, user.userName FROM((appointment INNER JOIN customer ON customer.customerId = appointment.customerId) INNER JOIN user ON appointment.userId = user.userId) WHERE appointment.start BETWEEN  '{start}' AND '{end}'";
             DataClass.sqlConnection.Open();
             MySqlCommand command = new MySqlCommand(sqlcmd, DataClass.sqlConnection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
@@ -68,6 +69,7 @@ namespace C969_Project
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 table.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)table.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+                table.Rows[i]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)table.Rows[i]["end"], TimeZoneInfo.Local).ToString();
             }
         }
 
@@ -107,7 +109,7 @@ namespace C969_Project
             }
             AppointmentMonthCalendar1.UpdateBoldedDates();
             string end =  year.ToString()+ "-" + month.ToString() + "-" + day.ToString();
-            string sqlcmd = $"SELECT * FROM appointment WHERE start BETWEEN '{start}' AND '{end}'";
+            string sqlcmd = $"SELECT appointment.appointmentId, appointment.title, appointment.type,  appointment.start, appointment.end,  customer.customerName, user.userName FROM((appointment INNER JOIN customer ON customer.customerId = appointment.customerId) INNER JOIN user ON appointment.userId = user.userId) WHERE appointment.start BETWEEN '{start}' AND '{end}'";
             DataClass.sqlConnection.Open();
             MySqlCommand command = new MySqlCommand(sqlcmd, DataClass.sqlConnection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);

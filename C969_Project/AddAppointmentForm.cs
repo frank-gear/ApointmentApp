@@ -37,7 +37,7 @@ namespace C969_Project
         {
             DateTime startcheck = DateTime.Today.AddHours(10);
             DateTime endcheck = DateTime.Today.AddHours(19);
-            //return after the messagebox
+            
             if (string.IsNullOrWhiteSpace(TitleOfAppointmentTextBox.Text))
             {
                 MessageBox.Show("Please fill in title of appointment");

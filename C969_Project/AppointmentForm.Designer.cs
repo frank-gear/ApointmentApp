@@ -59,7 +59,7 @@ namespace C969_Project
             // ViewByWeekRadioBtn
             // 
             this.ViewByWeekRadioBtn.AutoSize = true;
-            this.ViewByWeekRadioBtn.Location = new System.Drawing.Point(152, 12);
+            this.ViewByWeekRadioBtn.Location = new System.Drawing.Point(219, 12);
             this.ViewByWeekRadioBtn.Name = "ViewByWeekRadioBtn";
             this.ViewByWeekRadioBtn.Size = new System.Drawing.Size(133, 24);
             this.ViewByWeekRadioBtn.TabIndex = 1;
@@ -70,7 +70,7 @@ namespace C969_Project
             // ViewByMonthRadioBtn
             // 
             this.ViewByMonthRadioBtn.AutoSize = true;
-            this.ViewByMonthRadioBtn.Location = new System.Drawing.Point(291, 12);
+            this.ViewByMonthRadioBtn.Location = new System.Drawing.Point(358, 12);
             this.ViewByMonthRadioBtn.Name = "ViewByMonthRadioBtn";
             this.ViewByMonthRadioBtn.Size = new System.Drawing.Size(137, 24);
             this.ViewByMonthRadioBtn.TabIndex = 2;
@@ -172,10 +172,10 @@ namespace C969_Project
             this.dayradioButton1.Checked = true;
             this.dayradioButton1.Location = new System.Drawing.Point(15, 12);
             this.dayradioButton1.Name = "dayradioButton1";
-            this.dayradioButton1.Size = new System.Drawing.Size(120, 24);
+            this.dayradioButton1.Size = new System.Drawing.Size(190, 24);
             this.dayradioButton1.TabIndex = 12;
             this.dayradioButton1.TabStop = true;
-            this.dayradioButton1.Text = "View by Day";
+            this.dayradioButton1.Text = "View all Appointments";
             this.dayradioButton1.UseVisualStyleBackColor = true;
             this.dayradioButton1.CheckedChanged += new System.EventHandler(this.dayradioButton1_CheckedChanged);
             // 
