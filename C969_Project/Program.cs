@@ -33,3 +33,7 @@ namespace C969_Project
 // pre fill the text boxs for the modify customer
 // change customer recod to customer count
 //change report month to textbox  or add all the months 
+//data class
+//end > startcheck and end <= startcheck
+//start <= startcheck and end >= endcheck
+//appointid != selected appointid
