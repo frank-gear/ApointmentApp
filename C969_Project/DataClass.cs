@@ -18,16 +18,27 @@ namespace C969_Project
 
         public static int DataId(string command)
         {
-            sqlConnection.Close();
-            sqlConnection.Open();
-            MySqlCommand build = new MySqlCommand(command, sqlConnection);
-            int complete = Convert.ToInt32(build.ExecuteScalar());
-            sqlConnection.Close();
-            return complete;
+            try
+            {
+                sqlConnection.Close();
+                sqlConnection.Open();
+                MySqlCommand build = new MySqlCommand(command, sqlConnection);
+                int complete = Convert.ToInt32(build.ExecuteScalar());
+                sqlConnection.Close();
+                return complete;
+            
+            }
+            catch(System.InvalidCastException)
+            {
+                sqlConnection.Close();
+                return 0;
+            }
+           
         }
 
         public static void DataWrite(string command)
         {
+            sqlConnection.Close();
             sqlConnection.Open();
             MySqlCommand build = new MySqlCommand(command, sqlConnection);
             var complete = build.ExecuteNonQuery();
@@ -111,21 +122,26 @@ namespace C969_Project
             DataWrite(customer[2]);
             string user = "INSERT INTO `user` VALUES (1,'test','test',1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')";
             DataWrite(user);
-            DateTime time1 = Convert.ToDateTime(DateTime.UtcNow).AddMinutes(14);
-            DateTime time = Convert.ToDateTime(DateTime.UtcNow).AddMinutes(30);
+            DateTime alrt1 = Convert.ToDateTime(DateTime.UtcNow).AddMinutes(14);
+            DateTime alrt2 = alrt1.AddMinutes(30);
+            DateTime time1 = DateTime.Today.AddHours(10).AddMinutes(30);
+            DateTime time = time1.AddHours(1);                                           
+            time1 = time1.ToUniversalTime();
+            time = time.ToUniversalTime();
             string time2 = time1.ToString("yyyy-MM-dd HH:mm:ss");
             string timeEnd = time.ToString("yyyy-MM-dd HH:mm:ss");
-            DateTime st2 = DateTime.UtcNow.AddDays(7);
+            DateTime st2 = time1.AddDays(7);
             DateTime en2 = st2.AddMinutes(30);
-            DateTime st3 = DateTime.UtcNow.AddDays(3);
+            DateTime st3 = time1.AddDays(3);
             DateTime en3 = st3.AddMinutes(30);
 
 
             string[] appointment =
             {
-              $"INSERT INTO `appointment` VALUES (1,1,1,'not needed','not needed','not needed','not needed','Presentation','not needed','{st3.ToString("yyyy-MM-dd HH:mm:ss")}','{en3.ToString("yyyy-MM-dd HH:mm:ss")}','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
-              $"INSERT INTO `appointment` VALUES (2,2,1,'not needed','not needed','not needed','not needed','Interview','not needed','{st2.ToString("yyyy-MM-dd HH:mm:ss")}','{en2.ToString("yyyy-MM-dd HH:mm:ss")}','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
-              $"INSERT INTO `appointment` VALUES (3,3,1,'not needed','not needed','not needed','not needed','Scrum','not needed','{time2}','{timeEnd}','2021-01-01 00:00:00','test','2019-01-01 00:00:00','test')"
+              $"INSERT INTO `appointment` VALUES (1,1,1,'Talk to Customer','not needed','not needed','not needed','Presentation','not needed','{st3.ToString("yyyy-MM-dd HH:mm:ss")}','{en3.ToString("yyyy-MM-dd HH:mm:ss")}','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
+              $"INSERT INTO `appointment` VALUES (2,2,1,'Brief Meeting','not needed','not needed','not needed','Interview','not needed','{st2.ToString("yyyy-MM-dd HH:mm:ss")}','{en2.ToString("yyyy-MM-dd HH:mm:ss")}','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
+              $"INSERT INTO `appointment` VALUES (3,3,1,'Introduction','not needed','not needed','not needed','Scrum','not needed','{time2}','{timeEnd}','2021-01-01 00:00:00','test','2019-01-01 00:00:00','test')",
+              $"INSERT INTO `appointment` VALUES (4,1,1,'Sales','not needed','not needed','not needed','Presentation','not needed','{alrt1.ToString("yyyy-MM-dd HH:mm:ss")}','{alrt2.ToString("yyyy-MM-dd HH:mm:ss")}','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test')"
 
             };
             DataWrite(appointment[0]);
@@ -181,10 +197,22 @@ namespace C969_Project
             sqlConnection.Close();
             return nameList;
         }
-        public static void modifyCustomer(int custid, int addid, string custname, string address, int citid, string postal, string phone, int activ)
+        public static void modifyCustomer(int custid, int addid, string custname, string address,  string postal, string phone, int activ, string country, string city)
         {
+            
+            string count = "SELECT MAX(countryId) FROM country";
+            int countryid = DataId(count) + 1;
+            string sqlcmd = $"INSERT INTO `country` VALUES ({countryid}, '{country}', '{CurDate()}', 'test', '{CurDate()}', 'test');";
+            DataWrite(sqlcmd);
+
+            
+            count = "SELECT MAX(cityId) FROM city";
+            int cityid = DataId(count) + 1;
+            sqlcmd = $"INSERT INTO `city` VALUES  ({cityid},'{city}',{countryid},'{CurDate()}','test','{CurDate()}','test');";
+            DataWrite(sqlcmd);
+
             string custupdate = $"UPDATE customer set customerName = '{custname}', active = '{activ}' WHERE customerId ='{custid}'";
-            string addupdate = $"update address set address = '{address}', cityId = '{citid}', postalCode ='{postal}', phone = '{phone}' WHERE addressId = '{addid}'";
+            string addupdate = $"update address set address = '{address}', cityId = '{cityid}', postalCode ='{postal}', phone = '{phone}' WHERE addressId = '{addid}'";
             DataWrite(custupdate);
             DataWrite(addupdate);
 
@@ -195,20 +223,31 @@ namespace C969_Project
             string time2 = time1.ToString("yyyy-MM-dd HH:mm:ss");
             return time2;
         }
-        public static void newCustomer(string custname, string address, int citid, string postal, string phone, int activ)
+        public static void newCustomer(string custname, string address, string city, string country, string postal, string phone, int activ)
         {
-            //get the count for address
-            //select max address id 
-            string addcount = "SELECT COUNT(*) FROM address";
-            int addid = DataId(addcount) + 1;
-            //select max address id 
-            //create new entries for each custumer for the cities and country
-            string addsql = $"INSERT INTO address VALUES({addid},'{address}', ' ', {citid}, '{postal}', '{phone}', '{CurDate()}', 'test', '{CurDate()}', 'test')";
-            DataWrite(addsql);
-            string custcount = "SELECT COUNT(*) FROM customer";
+            //create country
+            string count = "SELECT MAX(countryId) FROM country";
+            int countryid = DataId(count) + 1;
+            string sqlcmd = $"INSERT INTO `country` VALUES ({countryid}, '{country}', '{CurDate()}', 'test', '{CurDate()}', 'test');";
+            DataWrite(sqlcmd);
+            
+            //create ctiy
+            count = "SELECT MAX(cityId) FROM city";
+            int cityid = DataId(count) + 1;
+            sqlcmd = $"INSERT INTO `city` VALUES  ({cityid},'{city}',{countryid},'{CurDate()}','test','{CurDate()}','test');";
+            DataWrite(sqlcmd);
+            
+            //create address 
+            count = "SELECT MAX(addressId) FROM address";
+            int addid = DataId(count) + 1;
+            sqlcmd = $"INSERT INTO address VALUES({addid},'{address}', ' ', {cityid}, '{postal}', '{phone}', '{CurDate()}', 'test', '{CurDate()}', 'test')";
+            DataWrite(sqlcmd);
+            // create customer
+            
+            string custcount = "SELECT MAX(customerId) FROM customer";
             int custid = DataId(custcount) + 1;
-            string addcust = $"INSERT INTO customer VALUES ({custid},'{custname}',{addid},{activ},'{CurDate()}','test','{CurDate()}','test')";
-            DataWrite(addcust);
+            sqlcmd = $"INSERT INTO customer VALUES ({custid},'{custname}',{addid},{activ},'{CurDate()}','test','{CurDate()}','test')";
+            DataWrite(sqlcmd);
 
         }
         public static void ModifyAppointment(int appid, string title, string type, string start, string end)
@@ -219,7 +258,7 @@ namespace C969_Project
 
         public static void AddNewAppointment(int custid, string title, string type, string start, string end)
         {
-            string addcount = "SELECT COUNT(*) FROM appointment";
+            string addcount = "SELECT MAX(appointmentId) FROM appointment";
             int appid = DataId(addcount) + 1;
             string sqlcmd = $"INSERT INTO `appointment` VALUES ('{appid}','{custid}',1,'{title}','not needed','not needed','not needed','{type}','not needed','{start}','{end}','{CurDate()}','test','{CurDate()}','test')";
             DataWrite(sqlcmd);

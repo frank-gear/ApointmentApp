@@ -96,7 +96,7 @@ namespace C969_Project
             this.EndOfAppointmentDateTimePicker.Name = "EndOfAppointmentDateTimePicker";
             this.EndOfAppointmentDateTimePicker.Size = new System.Drawing.Size(344, 26);
             this.EndOfAppointmentDateTimePicker.TabIndex = 6;
-            this.EndOfAppointmentDateTimePicker.Value = new System.DateTime(2021, 6, 11, 0, 0, 0, 0);
+            this.EndOfAppointmentDateTimePicker.Value = new System.DateTime(2021, 8, 16, 0, 0, 0, 0);
             // 
             // StartOfAppointmentDateTimePicker
             // 
@@ -106,6 +106,7 @@ namespace C969_Project
             this.StartOfAppointmentDateTimePicker.Name = "StartOfAppointmentDateTimePicker";
             this.StartOfAppointmentDateTimePicker.Size = new System.Drawing.Size(344, 26);
             this.StartOfAppointmentDateTimePicker.TabIndex = 7;
+            this.StartOfAppointmentDateTimePicker.Value = new System.DateTime(2021, 8, 16, 19, 25, 6, 0);
             // 
             // TitleOfAppointmentTextBox
             // 

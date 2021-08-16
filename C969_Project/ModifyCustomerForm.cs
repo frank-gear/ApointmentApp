@@ -13,30 +13,34 @@ namespace C969_Project
 {   
     public partial class ModifyCustomerForm : Form
     {
-        private static Array customerlist;
-        private Array cityList;
-        private static int custId;
-        private static int addId;
+       
+      
+        public static int selectedcust;
+        public static string custname;
+        public static string street;
+        public static string city;
+        public static string country;
+        public static string zip;
+        public static string phone;
+        public static bool act;
+
         public ModifyCustomerForm()
         {
             InitializeComponent();
-            customerlist = DataClass.GetCustomerList();
-            cityList = DataClass.GetCityList();
-            citylistBox1.DataSource = cityList;
-            customerlistBox1.DataSource = customerlist;
+            datainsert();
+      
         }
 
-        private void custselectbtn_Click(object sender, EventArgs e)
+        private void datainsert()
         {
-           string selected = customerlistBox1.SelectedItem.ToString();
-            string sqlcmd1 = $"SELECT customerId FROM customer WHERE customerName = '{selected}'";
-            string sqlcmd2 = $"SELECT addressId FROM customer WHERE customerName = '{selected}'";
-            string sqlcmdadress = $"SELECT * FROM address WHERE addressId = '{addId}'";
-            custId = DataClass.DataId(sqlcmd1);
-             addId = DataClass.DataId(sqlcmd2);
-            MySqlDataReader reader = DataClass.DataRead(sqlcmdadress);
-            CustomerNameTextBox.Text = selected;
-
+            CustomerNameTextBox.Text = custname;
+            StreetTextBox.Text = street;
+            citytextBox1.Text = city;
+            CountrytextBox1.Text = country;
+            ZipCodeTextBox.Text = zip;
+            PhoneNumberTextBox.Text = phone;
+            ActivecheckBox1.Checked = act;
+            
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -55,21 +59,23 @@ namespace C969_Project
             }
             else
             {
+
                 DataClass.sqlConnection.Close();
                 string name = CustomerNameTextBox.Text;
                 string address = StreetTextBox.Text;
-                string city = citylistBox1.SelectedItem.ToString();
-                string sqlcmd = $"SELECT cityId FROM city WHERE city = '{city}'";
-                int cityid = DataClass.DataId(sqlcmd);
+                string city = citytextBox1.Text;
+                string sqlcmd = $"SELECT addressId FROM customer WHERE customerId = '{selectedcust}'";
+                int addId = DataClass.DataId(sqlcmd);
                 string zip = ZipCodeTextBox.Text;
                 string phone = PhoneNumberTextBox.Text;
+                string country = CountrytextBox1.Text;               
                 int act = 0;
                 if (ActivecheckBox1.Checked)
                 {
                     act = 1;
                 }
 
-                DataClass.modifyCustomer(custId, addId, name, address, cityid, zip, phone, act);
+                DataClass.modifyCustomer(selectedcust, addId, name, address, zip, phone, act, country, city);
                 this.Close();
                 RecordsForm recordsForm = new RecordsForm();
                 recordsForm.Show();

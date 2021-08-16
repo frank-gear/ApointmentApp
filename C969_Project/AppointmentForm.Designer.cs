@@ -47,6 +47,7 @@ namespace C969_Project
             // 
             // AppointmentdataGridView1
             // 
+            this.AppointmentdataGridView1.AllowUserToAddRows = false;
             this.AppointmentdataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AppointmentdataGridView1.Location = new System.Drawing.Point(14, 60);
             this.AppointmentdataGridView1.Name = "AppointmentdataGridView1";

@@ -13,7 +13,7 @@ namespace C969_Project
 {
     public partial class RecordsForm : Form
     {
-        public static object selectcustomer;
+        
         public RecordsForm()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace C969_Project
         {
             DataClass.sqlConnection.Close();
             DataClass.sqlConnection.Open();
-            string sqlcon = "SELECT * FROM customer, address WHERE address.addressid = customer.addressid";
+            string sqlcon = "SELECT customer.customerId, customer.customerName, customer.active, address.phone, address.address, address.postalCode, city.city, country.country FROM ((( customer INNER JOIN address ON customer.addressId = address.addressId) INNER JOIN city ON address.cityId = city.cityId) INNER JOIN country ON city.countryId = country.countryId);";
             MySqlCommand command = new MySqlCommand(sqlcon, DataClass.sqlConnection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             DataTable table = new DataTable();
@@ -49,9 +49,27 @@ namespace C969_Project
 
         private void ModifyCustomerBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
-            ModifyCustomerForm modifyCustomerForm = new ModifyCustomerForm();
-            modifyCustomerForm.Show();
+            if (dataGridView1.CurrentCell.RowIndex < 0)
+            {
+                string err = "Please select the a customerId  in the grid to modify ";
+                MessageBox.Show(err);
+            }
+            else
+            {
+                
+                ModifyCustomerForm.selectedcust = (int)dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value;
+                ModifyCustomerForm.custname = (string)dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[1].Value;
+                ModifyCustomerForm.act = (bool)dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[2].Value;
+                ModifyCustomerForm.phone = (string)dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[3].Value;
+                ModifyCustomerForm.street = (string)dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[4].Value;
+                ModifyCustomerForm.zip = (string)dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value;
+                ModifyCustomerForm.city = (string)dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[6].Value;
+                ModifyCustomerForm.country = (string)dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[7].Value;
+                ModifyCustomerForm modifyCustomerForm = new ModifyCustomerForm();
+                this.Close();
+                modifyCustomerForm.Show();
+            }
+            
 
         }
 

@@ -24,6 +24,7 @@ namespace C969_Project
         public LoginForm()
         {
             InitializeComponent();
+            lang();
             
         }
       
@@ -34,7 +35,7 @@ namespace C969_Project
             CultureInfo C = CultureInfo.CurrentCulture;
             string lang = C.TwoLetterISOLanguageName; //fr if lang == fr
 
-            if (RegionInfo.CurrentRegion.DisplayName == "France")
+            if (lang == "fr")
             {
                 UserIdLabel.Text = "utilisatrice";
                 PasswordLabel.Text = "le mot de passe";
@@ -73,7 +74,9 @@ namespace C969_Project
                 MessageBox.Show(err);
                 UserIdTextBox.Text = "";
                 UserPasswordTextBox.Text = "";
-                // record the bad login 
+                DateTime stamp = DateTime.UtcNow;
+                string write = $"Username: {UserIdTextBox.Text} attempted to Logged in @ '{stamp.ToString()}'";
+                fileWriter.WriteLine(write);
             }
 
         }

@@ -15,13 +15,15 @@ namespace C969_Project
     public partial class AddAppointmentForm : Form
     {
         private static Array customerlist;
-        private static List<string> typelist = new List<string>();
+        private static List<string> typelist = new List<string>() { "Presentation", "Interview", "Scrum" };
         public AddAppointmentForm()
         {
             customerlist = DataClass.GetCustomerList();
             InitializeComponent();
             customerlistBox1.DataSource = customerlist;
-            GetTypelist();
+            TypelistBox1.DataSource = typelist;
+
+            
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -34,17 +36,26 @@ namespace C969_Project
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             DateTime startcheck = DateTime.Today.AddHours(10);
-            //return after the messagebox
-            if (StartOfAppointmentDateTimePicker.Value.TimeOfDay < startcheck.TimeOfDay)
-            {
-                MessageBox.Show("Office hours start at 10 please pick a later start time");
-            }
             DateTime endcheck = DateTime.Today.AddHours(19);
-            if (EndOfAppointmentDateTimePicker.Value.TimeOfDay > endcheck.TimeOfDay)
+            //return after the messagebox
+            if (string.IsNullOrWhiteSpace(TitleOfAppointmentTextBox.Text))
             {
-                MessageBox.Show("Office hours end at 7 please pick an earlier end time");
+                MessageBox.Show("Please fill in title of appointment");
             }
-            if (DataClass.AppointmentOverlap(StartOfAppointmentDateTimePicker.Value, EndOfAppointmentDateTimePicker.Value))
+            else if (StartOfAppointmentDateTimePicker.Value.TimeOfDay < startcheck.TimeOfDay)
+            {
+                MessageBox.Show("Office hours start at 10 AM please pick a later start time");
+            }
+                
+            else if (EndOfAppointmentDateTimePicker.Value.TimeOfDay > endcheck.TimeOfDay)
+            {
+                MessageBox.Show("Office hours end at 7 pm please pick an earlier end time");
+            }
+            else if (EndOfAppointmentDateTimePicker.Value < StartOfAppointmentDateTimePicker.Value)
+            {
+                MessageBox.Show("Appointment End time must come after appointment start time");
+            }
+            else if (DataClass.AppointmentOverlap(StartOfAppointmentDateTimePicker.Value, EndOfAppointmentDateTimePicker.Value))
             {
                 MessageBox.Show("The selected time is in conflict with an existing appointment please choose a different time");
             }
@@ -57,8 +68,8 @@ namespace C969_Project
                 int custId = DataClass.DataId(sqlcmd1);
                 string title = TitleOfAppointmentTextBox.Text;
                 string type = TypelistBox1.Text;
-                DateTime start = StartOfAppointmentDateTimePicker.Value.ToLocalTime();
-                DateTime end = EndOfAppointmentDateTimePicker.Value.ToLocalTime();
+                DateTime start = StartOfAppointmentDateTimePicker.Value;
+                DateTime end = EndOfAppointmentDateTimePicker.Value;
                 DataClass.AddNewAppointment(custId, title, type, convert(start), convert(end));
                 this.Close();
                 AppointmentForm appointmentForm = new AppointmentForm();

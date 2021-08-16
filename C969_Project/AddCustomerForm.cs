@@ -19,8 +19,6 @@ namespace C969_Project
         public AddCustomerForm()
         {
             InitializeComponent();
-            cityList = DataClass.GetCityList();
-            CitySelectBox.DataSource = cityList;
             string sqlcmd = "SELECT customerName from customer";
             
             MySqlDataReader reader = DataClass.DataRead(sqlcmd);
@@ -55,7 +53,7 @@ namespace C969_Project
 
                       
             
-            if (CustomerNameTextBox.Text == "" || StreetTextBox.Text == "" || ZipCodeTextBox.Text == "" || PhoneNumberTextBox.Text == "")
+            if (string.IsNullOrWhiteSpace (CustomerNameTextBox.Text) || string.IsNullOrWhiteSpace( StreetTextBox.Text) || string.IsNullOrWhiteSpace(CitytextBox1.Text) || string.IsNullOrWhiteSpace(CountrytextBox3.Text) || string.IsNullOrWhiteSpace(ZipCodeTextBox.Text) || string.IsNullOrWhiteSpace(PhoneNumberTextBox.Text) )
             {
                 string err = "Invalid entry. Customer data is missing. ";
                 MessageBox.Show(err);
@@ -77,9 +75,8 @@ namespace C969_Project
             {
                 string name = CustomerNameTextBox.Text;
                 string address = StreetTextBox.Text;
-                string city = CitySelectBox.SelectedItem.ToString();
-                string sqlcmd = $"SELECT cityId FROM city WHERE city = '{city}'";
-                int cityid = DataClass.DataId(sqlcmd);
+                string city = CitytextBox1.Text;
+                string country = CountrytextBox3.Text;                             
                 string zip = ZipCodeTextBox.Text;
                 string phone = PhoneNumberTextBox.Text;
                 int act = 0;
@@ -87,7 +84,7 @@ namespace C969_Project
                 {
                     act = 1;
                 }
-                DataClass.newCustomer(name, address, cityid, zip, phone, act);
+                DataClass.newCustomer(name, address, city, country, zip, phone, act);
 
                 this.Close();
                 RecordsForm records = new RecordsForm();
@@ -100,6 +97,11 @@ namespace C969_Project
             this.Close();
             RecordsForm records = new RecordsForm();
             records.Show();
+        }
+
+        private void AddCustomerForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
