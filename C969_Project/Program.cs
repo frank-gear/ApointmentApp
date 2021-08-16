@@ -22,18 +22,4 @@ namespace C969_Project
         }
     }
 }
-//notes 
-//overlap failing think its an issue with the local to utc conversion
-//custoemr delete is also failing due to some kind of foriegn key conflict
-//utc to local seems to mess up the return
-// not sure about link in project requirments
-// list from the data reader such a type are returning all jumbled
-//things to do
-// update add customer country and city
-// pre fill the text boxs for the modify customer
-// change customer recod to customer count
-//change report month to textbox  or add all the months 
-//data class
-//end > startcheck and end <= startcheck
-//start <= startcheck and end >= endcheck
-//appointid != selected appointid
+

@@ -270,13 +270,31 @@ namespace C969_Project
             end = end.ToUniversalTime();
             string endchk = end.ToString("yyyy-MM-dd HH:mm:ss");
             //string sqlcmd = $"SELECT * FROM appointment WHERE  start BETWEEN '{strtchk}' AND '{ endchk}';";
-            string sqlcmd = $"SELECT * FROM appointment WHERE  (start >= '{strtchk}'  AND start < '{ endchk}')";
+            string sqlcmd = $"SELECT * FROM appointment WHERE  (start >= '{strtchk}'  AND start < '{ endchk}') OR (end > '{strtchk}' AND end <= '{strtchk}') OR (start <= '{strtchk}' AND end >= '{endchk}');";
             //end > startcheck and end <= startcheck
             //start <= startcheck and end >= endcheck
             //appointid != selected appointid
             Console.WriteLine(sqlcmd);
             MySqlDataReader complete = DataRead(sqlcmd);
             bool status = complete.HasRows;
+            sqlConnection.Close();
+            return status;
+        }
+        public static bool AppointmentOverlapForModify(DateTime start, DateTime end, int appId)
+        {
+            start = start.ToUniversalTime();
+            string strtchk = start.ToString("yyyy-MM-dd HH:mm:ss");
+            end = end.ToUniversalTime();
+            string endchk = end.ToString("yyyy-MM-dd HH:mm:ss");
+            //string sqlcmd = $"SELECT * FROM appointment WHERE  start BETWEEN '{strtchk}' AND '{ endchk}';";
+            string sqlcmd = $"SELECT * FROM appointment WHERE (appointmentId != '{appId}') AND ((start >= '{strtchk}'  AND start < '{ endchk}') OR (end > '{strtchk}' AND end <= '{strtchk}') OR (start <= '{strtchk}' AND end >= '{endchk}'));";
+            //end > startcheck and end <= startcheck
+            //start <= startcheck and end >= endcheck
+            //appointid != selected appointid
+            Console.WriteLine(sqlcmd);
+            MySqlDataReader complete = DataRead(sqlcmd);
+            bool status = complete.HasRows;
+            sqlConnection.Close();
             return status;
         }
         public static void AppointmentAlert()

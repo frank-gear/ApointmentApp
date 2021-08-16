@@ -80,7 +80,7 @@ namespace C969_Project
             {
                 MessageBox.Show("Appointment End time must come after appointment start time");
             }
-            else if (DataClass.AppointmentOverlap(StartOfAppointmentDateTimePicker.Value, EndOfAppointmentDateTimePicker.Value))
+            else if (DataClass.AppointmentOverlapForModify(StartOfAppointmentDateTimePicker.Value, EndOfAppointmentDateTimePicker.Value,select))
             {
                 MessageBox.Show("The selected time is in conflict with an existing appointment please choose a different time");
             }
