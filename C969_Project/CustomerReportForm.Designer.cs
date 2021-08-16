@@ -29,34 +29,23 @@ namespace C969_Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.CustomerReportDataGridView = new System.Windows.Forms.DataGridView();
             this.CustomerReportlabel = new System.Windows.Forms.Label();
             this.ExitBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.CustomerReportDataGridView)).BeginInit();
+            this.CustomertextBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // CustomerReportDataGridView
-            // 
-            this.CustomerReportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CustomerReportDataGridView.Location = new System.Drawing.Point(19, 63);
-            this.CustomerReportDataGridView.Name = "CustomerReportDataGridView";
-            this.CustomerReportDataGridView.RowHeadersWidth = 62;
-            this.CustomerReportDataGridView.RowTemplate.Height = 28;
-            this.CustomerReportDataGridView.Size = new System.Drawing.Size(752, 447);
-            this.CustomerReportDataGridView.TabIndex = 0;
             // 
             // CustomerReportlabel
             // 
             this.CustomerReportlabel.AutoSize = true;
             this.CustomerReportlabel.Location = new System.Drawing.Point(24, 40);
             this.CustomerReportlabel.Name = "CustomerReportlabel";
-            this.CustomerReportlabel.Size = new System.Drawing.Size(158, 20);
+            this.CustomerReportlabel.Size = new System.Drawing.Size(168, 20);
             this.CustomerReportlabel.TabIndex = 1;
-            this.CustomerReportlabel.Text = "Cities with customers";
+            this.CustomerReportlabel.Text = "Number of  Customers";
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Location = new System.Drawing.Point(696, 528);
+            this.ExitBtn.Location = new System.Drawing.Point(117, 132);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(75, 40);
             this.ExitBtn.TabIndex = 2;
@@ -64,26 +53,32 @@ namespace C969_Project
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
+            // CustomertextBox1
+            // 
+            this.CustomertextBox1.Location = new System.Drawing.Point(28, 78);
+            this.CustomertextBox1.Name = "CustomertextBox1";
+            this.CustomertextBox1.ReadOnly = true;
+            this.CustomertextBox1.Size = new System.Drawing.Size(164, 26);
+            this.CustomertextBox1.TabIndex = 3;
+            // 
             // CustomerReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 580);
+            this.ClientSize = new System.Drawing.Size(289, 580);
+            this.Controls.Add(this.CustomertextBox1);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.CustomerReportlabel);
-            this.Controls.Add(this.CustomerReportDataGridView);
             this.Name = "CustomerReportForm";
             this.Text = "CustomerReportForm";
-            ((System.ComponentModel.ISupportInitialize)(this.CustomerReportDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView CustomerReportDataGridView;
         private System.Windows.Forms.Label CustomerReportlabel;
         private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.TextBox CustomertextBox1;
     }
 }

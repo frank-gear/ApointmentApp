@@ -30,13 +30,8 @@ namespace C969_Project
         {
             DataClass.sqlConnection.Close();
             DataClass.sqlConnection.Open();
-            string sqlcon = "SELECT city FROM city";
-            MySqlCommand command = new MySqlCommand(sqlcon, DataClass.sqlConnection);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            CustomerReportDataGridView.DataSource = table;
-            DataClass.sqlConnection.Close();
+            string sqlcon = "SELECT COUNT(*) FROM customer";
+            CustomertextBox1.Text = DataClass.DataId(sqlcon).ToString();
         }
     }
 }

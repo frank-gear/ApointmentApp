@@ -134,7 +134,7 @@ namespace C969_Project
             this.CustomerReportBtn.Name = "CustomerReportBtn";
             this.CustomerReportBtn.Size = new System.Drawing.Size(276, 58);
             this.CustomerReportBtn.TabIndex = 8;
-            this.CustomerReportBtn.Text = "Cities with Customers Report";
+            this.CustomerReportBtn.Text = "Number of  Customers Report";
             this.CustomerReportBtn.UseVisualStyleBackColor = true;
             this.CustomerReportBtn.Click += new System.EventHandler(this.CustomerReportBtn_Click);
             // 
