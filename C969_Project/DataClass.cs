@@ -261,7 +261,7 @@ namespace C969_Project
         {
             string addcount = "SELECT MAX(appointmentId) FROM appointment";
             int appid = DataId(addcount) + 1;
-            string sqlcmd = $"INSERT INTO `appointment` VALUES ('{appid}','{custid}',1,'{title}','not needed','not needed','not needed','{type}','not needed','{start}','{end}','{CurDate()}','test','{CurDate()}','test')";
+            string sqlcmd = $"INSERT INTO `appointment` VALUES ('{appid}','{custid}',{LoginForm.usrLogin},'{title}','not needed','not needed','not needed','{type}','not needed','{start}','{end}','{CurDate()}','test','{CurDate()}','test')";
             DataWrite(sqlcmd);
         }
         public static bool AppointmentOverlap(DateTime start, DateTime end)

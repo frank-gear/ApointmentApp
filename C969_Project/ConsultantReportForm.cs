@@ -37,6 +37,7 @@ namespace C969_Project
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 table.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)table.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+                table.Rows[i]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)table.Rows[i]["end"], TimeZoneInfo.Local).ToString();
             }
         }
 

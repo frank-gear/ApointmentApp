@@ -51,7 +51,7 @@ namespace C969_Project
         {
             if (dataGridView1.CurrentCell.RowIndex < 0)
             {
-                string err = "Please select the a customerId  in the grid to modify ";
+                string err = "Please select the  customerId to modify ";
                 MessageBox.Show(err);
             }
             else

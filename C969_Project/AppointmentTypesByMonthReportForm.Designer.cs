@@ -65,9 +65,9 @@ namespace C969_Project
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(313, 20);
+            this.label1.Size = new System.Drawing.Size(255, 20);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Change Slected Month to View Type Count";
+            this.label1.Text = "Change Month to View Type Count";
             // 
             // label2
             // 

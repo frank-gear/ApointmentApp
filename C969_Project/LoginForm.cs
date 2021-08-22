@@ -16,10 +16,10 @@ namespace C969_Project
 {
     public partial class LoginForm : Form
     {
-       private string err;
-        public static string usrLogin;       
+        private string err = "bad login";
+        public static int usrLogin;       
         private static string fileName = "UserLog.txt";
-        private static FileStream file = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write);
+        private static FileStream file = new FileStream(fileName, FileMode.Append, FileAccess.Write);
         private StreamWriter fileWriter = new StreamWriter(file);
         public LoginForm()
         {
@@ -55,13 +55,13 @@ namespace C969_Project
           if  (DataClass.UserLogin(UserIdTextBox.Text, UserPasswordTextBox.Text))
             {
                 DataClass.sqlConnection.Close();
-                string user = UserIdTextBox.Text;
-                usrLogin = UserIdTextBox.Text;
+                string user = UserIdTextBox.Text;               
                 string sqlcmd = $"SELECT userId FROM user WHERE userName ='{user}'";
-                int usserid = DataClass.DataId(sqlcmd);
+                usrLogin = DataClass.DataId(sqlcmd);
                 DateTime stamp = DateTime.UtcNow;
-                string write = $"Username: '{user}' userId: '{usserid}' Logged in @ '{stamp.ToString()}'";              
+                string write = $"Username: '{user}' userId: '{usrLogin}' Logged in @ '{stamp.ToString()}'";              
                 fileWriter.WriteLine(write);
+                fileWriter.Flush();
                 
                 this.Hide();
                 DataClass.AppointmentAlert();
@@ -70,13 +70,14 @@ namespace C969_Project
             }
             else
             {
-                 err = "bad login";
+                 
                 MessageBox.Show(err);
                 UserIdTextBox.Text = "";
                 UserPasswordTextBox.Text = "";
                 DateTime stamp = DateTime.UtcNow;
                 string write = $"Username: {UserIdTextBox.Text} attempted to Logged in @ '{stamp.ToString()}'";
                 fileWriter.WriteLine(write);
+                fileWriter.Flush();
             }
 
         }
