@@ -58,8 +58,8 @@ namespace C969_Project
                 string user = UserIdTextBox.Text;               
                 string sqlcmd = $"SELECT userId FROM user WHERE userName ='{user}'";
                 usrLogin = DataClass.DataId(sqlcmd);
-                DateTime stamp = DateTime.UtcNow;
-                string write = $"Username: '{user}' userId: '{usrLogin}' Logged in @ '{stamp.ToString()}'";              
+                DateTime stamp = DateTime.UtcNow.ToLocalTime();
+                string write = $"Username: '{user}' userId: '{usrLogin}' Logged in @ '{stamp.ToString()}' LOCAL TIME";              
                 fileWriter.WriteLine(write);
                 fileWriter.Flush();
                 
@@ -70,14 +70,13 @@ namespace C969_Project
             }
             else
             {
-                 
-                MessageBox.Show(err);
-                UserIdTextBox.Text = "";
-                UserPasswordTextBox.Text = "";
-                DateTime stamp = DateTime.UtcNow;
-                string write = $"Username: {UserIdTextBox.Text} attempted to Logged in @ '{stamp.ToString()}'";
+                DateTime stamp = DateTime.UtcNow.ToLocalTime();
+                string write = $"Username: '{UserIdTextBox.Text}' attempted to Logged in @ '{stamp.ToString()}' LOCAL TIME";
                 fileWriter.WriteLine(write);
                 fileWriter.Flush();
+                UserIdTextBox.Text = "";
+                UserPasswordTextBox.Text = "";
+                MessageBox.Show(err);
             }
 
         }
