@@ -34,6 +34,7 @@ namespace C969_Project
             this.DeleteCustomerBtn = new System.Windows.Forms.Button();
             this.AppointmentsBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Searchbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,11 +89,22 @@ namespace C969_Project
             this.dataGridView1.Size = new System.Drawing.Size(1010, 428);
             this.dataGridView1.TabIndex = 5;
             // 
+            // Searchbtn
+            // 
+            this.Searchbtn.Location = new System.Drawing.Point(1022, 281);
+            this.Searchbtn.Name = "Searchbtn";
+            this.Searchbtn.Size = new System.Drawing.Size(183, 55);
+            this.Searchbtn.TabIndex = 6;
+            this.Searchbtn.Text = "Customer Search";
+            this.Searchbtn.UseVisualStyleBackColor = true;
+            this.Searchbtn.Click += new System.EventHandler(this.Searchbtn_Click);
+            // 
             // RecordsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1220, 449);
+            this.Controls.Add(this.Searchbtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.AppointmentsBtn);
             this.Controls.Add(this.DeleteCustomerBtn);
@@ -111,5 +123,6 @@ namespace C969_Project
         private System.Windows.Forms.Button DeleteCustomerBtn;
         private System.Windows.Forms.Button AppointmentsBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button Searchbtn;
     }
 }

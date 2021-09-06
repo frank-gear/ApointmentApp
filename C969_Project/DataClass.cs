@@ -70,7 +70,7 @@ namespace C969_Project
 
 
         }
-        /// <summary>
+        //customer search
 
 
 

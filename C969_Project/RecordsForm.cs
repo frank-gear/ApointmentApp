@@ -80,6 +80,13 @@ namespace C969_Project
             deleteCustomerForm.Show();
            
         }
+
+        private void Searchbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            SearchForm searchForm = new SearchForm();
+            searchForm.Show();
+        }
     }
     
 }
