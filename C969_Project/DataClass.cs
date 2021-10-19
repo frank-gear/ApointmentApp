@@ -12,7 +12,7 @@ namespace C969_Project
 {
     public static class DataClass
     {
-        public static string wguDatabase = "server=wgudb.ucertify.com;userid=U04iSl;password=53688253345;database=U04iSl";
+        public static string wguDatabase = "server=127.0.0.1;userid=sqlUser;password=Passw0rd!;database=client_schedule";
 
         public static MySqlConnection sqlConnection = new MySqlConnection(wguDatabase);
 

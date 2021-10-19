@@ -59,6 +59,7 @@
     <Compile Include="AddCustomerForm.Designer.cs">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddressClass.cs" />
     <Compile Include="AdminUserClass.cs" />
     <Compile Include="AppointmentClass.cs" />
     <Compile Include="AppointmentForm.cs">
@@ -73,12 +74,14 @@
     <Compile Include="AppointmentTypesByMonthReportForm.Designer.cs">
       <DependentUpon>AppointmentTypesByMonthReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CityClass.cs" />
     <Compile Include="ConsultantReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConsultantReportForm.Designer.cs">
       <DependentUpon>ConsultantReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CountryClass.cs" />
     <Compile Include="CustomerClass.cs" />
     <Compile Include="CustomerReportForm.cs">
       <SubType>Form</SubType>
